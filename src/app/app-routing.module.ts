@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminComponent} from './layout/admin/admin.component';
 import {AuthComponent} from './layout/auth/auth.component';
+import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
 
 const routes: Routes = [
   {
@@ -10,12 +11,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'check-in-visitors',
         pathMatch: 'full'
-      }, {
+      }, 
+      {
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)
       },
+      //start create new component routings
+      {
+        path: 'check-in-visitors',
+        component :CheckInVisitorsComponent,
+      },
+
        {
         path: 'basic',
         loadChildren: () => import('./pages/ui-elements/basic/basic.module').then(m => m.BasicModule)

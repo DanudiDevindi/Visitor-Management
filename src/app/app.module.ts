@@ -10,6 +10,8 @@ import { TitleComponent } from './layout/admin/title/title.component';
 import { AuthComponent } from './layout/auth/auth.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AdminComponent,
     BreadcrumbsComponent,
     TitleComponent,
-    AuthComponent
+    AuthComponent,
+    CheckInVisitorsComponent,
+    
   ],
   imports: [
     BrowserModule,

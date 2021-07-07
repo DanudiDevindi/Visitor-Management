@@ -1,0 +1,43 @@
+.search-btn{
+    margin-top: 15%;
+    height: 46%;
+    position: relative;
+    width: 89%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.check-in-visitor{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.form-headers {
+    font-weight: 700;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+.header-title{
+    font-weight: 700;
+    padding-bottom: 2%;
+}
+
+@media screen and (max-width: 1200px) {
+    .search-btn{
+        margin-top: 21%;
+        
+    }
+  }
+  @media screen and (max-width: 780px) {
+    .search-btn{
+        margin-top: 11%;
+        height: 50%;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .search-btn{
+        margin-top: 6%;
+        width: 50%;
+       
+    }
+  }
+  
+ 
+ 
