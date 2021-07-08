@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AdminComponent} from './layout/admin/admin.component';
 import {AuthComponent} from './layout/auth/auth.component';
 import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
+import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-in-visitors.component';
 
 const routes: Routes = [
   {
@@ -18,10 +19,15 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)
       },
+      
       //start create new component routings
       {
         path: 'check-in-visitors',
         component :CheckInVisitorsComponent,
+      },
+      {
+        path: 'checked-in-visitors',
+        component :CheckedInVisitorsComponent,
       },
 
        {

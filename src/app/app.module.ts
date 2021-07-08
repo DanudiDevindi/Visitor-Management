@@ -12,6 +12,7 @@ import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
 import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination';
+import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-in-visitors.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination
     TitleComponent,
     AuthComponent,
     CheckInVisitorsComponent,
+    CheckedInVisitorsComponent,
     
   ],
   imports: [

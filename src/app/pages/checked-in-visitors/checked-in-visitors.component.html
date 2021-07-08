@@ -1,0 +1,48 @@
+<div class="header-title">Checked in visitors</div>
+
+<form class="checked-in-visitor-form">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12 mb-3">
+            <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+            <div class="invalid-feedback">
+                Valid visitor detail is required.
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-12 mb-3" style="text-align: center;">
+         <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+        </div>
+    </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table">
+       <thead>
+         <tr>
+           <th scope="col">Checkout</th>
+           <th scope="col">Pass Number</th>
+           <th scope="col">Checked in time</th>
+           <th scope="col">Nic/Passport</th>
+           <th scope="col">First Name</th>
+           <th scope="col">Last Name</th>
+           <th scope="col">Mobile</th>
+           <th scope="col">Email</th>
+           <th scope="col"> Staff Member Name</th>
+         </tr>
+       </thead>
+       <tbody *ngFor="let visiteda of pageOfItems">
+         <tr>
+           <td> <button type="submit" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
+           <td>{{visiteda.passnumber}}</td>
+           <td>{{visiteda.checkedintime}}</td>
+           <td>{{visiteda.nicpassport}}</td>
+           <td>{{visiteda.firstname}}</td>
+           <td>{{visiteda.lastname}}</td>
+           <td>{{visiteda.mobile}}</td>
+           <td>{{visiteda.email}}</td>
+           <td>{{visiteda.staffmembername}}</td>
+           
+         </tr>
+        </tbody>
+        </table>
+        <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
+     </div>
