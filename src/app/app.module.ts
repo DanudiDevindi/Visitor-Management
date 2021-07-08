@@ -11,6 +11,7 @@ import { AuthComponent } from './layout/auth/auth.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
+import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-vis
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    JwPaginationModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

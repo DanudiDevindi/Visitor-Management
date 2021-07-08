@@ -1,6 +1,7 @@
 <div class="header-title">Check in visitors</div>
+<div class="container">
 <div class="row">
-    <div class="col-lg-6 col-md-12 check-in-visitor">
+    <div class="col-lg-6 col-md-12 col-sm-12 check-in-visitor">
         <form class="check-in-visitor-form">
             <div class="form-headers">Staff Details</div>
             <div class="row">
@@ -35,7 +36,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="designation">Designation</label>
-                    <input type="tel" class="form-control" id="designation" placeholder="Designation" required>
+                    <input type="text" class="form-control" id="designation" placeholder="Designation" required>
                     <div class="invalid-feedback">
                         Valid designation is required.
                     </div>
@@ -87,5 +88,113 @@
 
     </div>
 
-    <div class="col-lg-6 col-sm-12"></div>
+    <div class="col-lg-6 col-sm-12 col-md-12  check-in-visitor">
+     <form class="check-in-visitor-form">
+            <div class="form-headers">Visitor Details</div>
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
+                    <label for="visitor">Visitor</label>
+                    <input type="text" class="form-control" id="visitor" placeholder="Search by Name,mobile" required>
+                    <div class="invalid-feedback">
+                        Valid visitor detail is required.
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
+                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                </div>
+            </div>
+            
+           <div class="row">
+              <div class="col-md-6 mb-3">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                    <div class="invalid-feedback">
+                        Valid firstName is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                    <div class="invalid-feedback">
+                        Valid lastName is required.
+                    </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-md-6 mb-3">
+                      <label for="nicPassport">NIC/Passport</label>
+                      <input type="text" class="form-control" id="nicPassport" placeholder="NIC / Passport" required>
+                      <div class="invalid-feedback">
+                          Valid nic Passport is required.
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                      <label for="mobile">Mobile</label>
+                      <input type="tel" class="form-control" id="mobile" placeholder="Mobile" required>
+                      <div class="invalid-feedback">
+                          Valid mobile is required.
+                      </div>
+                  </div>
+               </div>
+           
+         <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <div class="invalid-feedback">
+                    valid email is required
+                </div>
+            </div>
+
+         <div class="mb-3">
+                    <label for="card">Card</label>
+                    <select class="custom-select d-block w-100" id="card" required>
+                        <option value="">Choose...</option>
+                        <option></option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please card a valid building.
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 mb-3"></div>
+            <div class="col-md-4 mb-3" style="text-align: end;">
+                <button type="submit" class="btn btn-primary mb-3 search-btn">Add to list</button>
+                </div>
+                </div>
+
+                <div class="table-responsive">
+                     <table class="table" id="dtBasicExample">
+                    <thead>
+                      <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">NIC/Passport</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Remove</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let visitors of pageOfItems ">
+                      <tr>
+                        <td>{{visitors.firstName}}</td>
+                        <td>{{visitors.nicPassport}}</td>
+                        <td>{{visitors.mobile}}</td>
+                        <td>
+                            <a href="" class="bin">
+                                <img src="https://img.icons8.com/material-rounded/24/fa314a/filled-trash.png"/>
+                                </a>
+                            </td>
+                      </tr>
+                     </tbody>
+                     </table>
+                     <jw-pagination [items]="visit" (changePage)="onChangePage($event)"></jw-pagination>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8 mb-3"></div>
+                <div class="col-md-4 mb-3" style="text-align: end;">
+                    <button type="submit" class="btn btn-primary mb-3 search-btn">Submit</button>
+                    </div>
+                    </div>
+        </form>
+        
+    </div>
+</div>
 </div>
