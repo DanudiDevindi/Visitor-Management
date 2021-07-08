@@ -63,6 +63,13 @@ const MENUITEMS = [
   type: 'link',
 
 },
+{
+  state: 'checked-out-visitors',
+  short_label: 'C',
+  name: 'Checked Out Visitors',
+  type: 'link',
+
+},
 
   //     {
   //       state: 'basic',

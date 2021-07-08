@@ -1,3 +1,4 @@
+import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
 import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'overdue-checked-in',
         component :OverdueCheckedInComponent,
+      },
+      {
+        path: 'checked-out-visitors',
+        component :CheckedOutVisitorsComponent,
       },
 
        {

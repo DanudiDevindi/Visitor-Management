@@ -14,6 +14,7 @@ import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-vis
 import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination';
 import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-in-visitors.component';
 import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
+import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-ch
     CheckInVisitorsComponent,
     CheckedInVisitorsComponent,
     OverdueCheckedInComponent,
+    CheckedOutVisitorsComponent,
     
   ],
   imports: [
