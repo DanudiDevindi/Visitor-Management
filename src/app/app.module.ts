@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
 import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination';
 import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-in-visitors.component';
+import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-
     AuthComponent,
     CheckInVisitorsComponent,
     CheckedInVisitorsComponent,
+    OverdueCheckedInComponent,
     
   ],
   imports: [
