@@ -34,13 +34,14 @@ const MENUITEMS = [
   {
     label: 'Navigation',
     main: [
-      // {
-      //   state: 'dashboard',
-      //   short_label: 'D',
-      //   name: 'Dashboard',
-      //   type: 'link',
-      //   icon: 'ti-home'
-      // },
+      {
+        state: 'dashboard',
+        short_label: 'D',
+        name: 'Dashboard',
+        type: 'link',
+        // icon: 'ti-home'
+      },
+      
      // start create new component routings 
       {
         state: 'check-in-visitors',

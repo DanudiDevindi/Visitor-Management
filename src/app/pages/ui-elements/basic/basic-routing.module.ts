@@ -16,6 +16,7 @@ const routes: Routes = [
         path: 'typography',
         loadChildren: () => import('./typography/typography.module').then(m => m.TypographyModule)
       }
+      
     ]
   }
 ];

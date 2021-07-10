@@ -1,3 +1,4 @@
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
 import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
@@ -16,15 +17,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'check-in-visitors',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       }, 
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)
-      },
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)
+      // },
       
       //start create new component routings
+      {
+        path: 'dashboard',
+        component:DashboardComponent,
+        },
       {
         path: 'check-in-visitors',
         component :CheckInVisitorsComponent,
