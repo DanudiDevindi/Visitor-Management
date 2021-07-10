@@ -17,7 +17,7 @@
             </form>
     </div>
     <div class="col-6 btn-rec">
-        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddReceptionist">Add Employee</button>
+        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddEmployee">Add Employee</button>
     </div>
 </div>
 <div class="table-card">
@@ -41,13 +41,13 @@
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
            <td>{{visiteda.floor}}</td>
-           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist">Edit</button></td>
+           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editemployee">Edit</button></td>
 <!-- 
-           modal for edit receptionist -->
-           <div id="editReceptionist" class="modal fade">
+           modal for edit employee -->
+           <div id="editemployee" class="modal fade">
             <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
                 <div class="modal-content">
-                  <div class="model-header-title">Add New Employee</div>
+                  <div class="model-header-title">Update Employee</div>
                 <div class="modal-body">
                      <form role="form">
                         <div class="row">
@@ -149,11 +149,11 @@
      </div>
 
 
-     <!-- Modal for add receptionist -->
-<div id="AddReceptionist" class="modal fade">
+     <!-- Modal for add employee -->
+<div id="AddEmployee" class="modal fade">
     <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
         <div class="modal-content">
-          <div class="model-header-title">Add New Receptionist</div>
+          <div class="model-header-title">Add New Employee</div>
         <div class="modal-body">
              <form role="form">
                 <div class="row">
