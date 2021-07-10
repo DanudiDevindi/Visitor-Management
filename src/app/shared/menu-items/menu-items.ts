@@ -49,6 +49,14 @@ const MENUITEMS = [
         type: 'link',
       
 },
+
+{
+  state: 'manage-staff',
+  short_label: 'C',
+  name: 'Manage Staff',
+  type: 'link',
+
+},
 {
   state: 'checked-in-visitors',
   short_label: 'C',

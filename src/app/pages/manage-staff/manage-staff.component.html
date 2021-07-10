@@ -1,0 +1,229 @@
+
+<div class="header-title">Manage Staff</div>
+<div class="row">
+    <div class="col-6">
+        <form class="checked-in-visitor-form">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
+                    <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+                    <div class="invalid-feedback">
+                        Valid visitor detail is required.
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
+                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                </div>
+            </div>
+            </form>
+    </div>
+    <div class="col-6 btn-rec">
+        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddReceptionist">Add Employee</button>
+    </div>
+</div>
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table">
+       <thead>
+         <tr>
+           
+           <th scope="col">Title</th>
+           <th scope="col">Address</th>
+           <th scope="col">Tel</th>
+           <th scope="col">Email</th>
+           <th scope="col">Floor</th>
+           <th scope="col">Action</th>
+            </tr>
+       </thead>
+       <tbody *ngFor="let visiteda of pageOfItems">
+         <tr>
+          <td>{{visiteda.title}}</td>
+           <td>{{visiteda.address}}</td>
+           <td>{{visiteda.tel}}</td>
+           <td>{{visiteda.email}}</td>
+           <td>{{visiteda.floor}}</td>
+           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist">Edit</button></td>
+<!-- 
+           modal for edit receptionist -->
+           <div id="editReceptionist" class="modal fade">
+            <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
+                <div class="modal-content">
+                  <div class="model-header-title">Add New Employee</div>
+                <div class="modal-body">
+                     <form role="form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">First Name</label>
+                                    <div>
+                                        <input type="text" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Tel</label>
+                                    <div>
+                                        <input type="tel" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Last Name</label>
+                                    <div>
+                                        <input type="tel" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <div>
+                                        <input type="email" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                             
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Designation</label>
+                                            <div>
+                                                <input type="text" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                            <label class="custom-control-label" for="customSwitch1">Active</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                     </div>
+                                    </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">NIC / Passport</label>
+                                            <div>
+                                                <input type="text" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                             </div>
+                                            <div class="col-md-6" style="text-align: center;">
+                                                <div class="form-group add-btn-div">
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary add-btn-modal  update-btn-align">
+                                                            Update
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                      
+                                        </div>
+                                     </div>
+                                    </div>
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+         </tr>
+        </tbody>
+        </table>
+        <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
+     </div>
+     </div>
+
+
+     <!-- Modal for add receptionist -->
+<div id="AddReceptionist" class="modal fade">
+    <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
+        <div class="modal-content">
+          <div class="model-header-title">Add New Receptionist</div>
+        <div class="modal-body">
+             <form role="form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">First Name</label>
+                            <div>
+                                <input type="text" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Tel</label>
+                            <div>
+                                <input type="tel" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Last Name</label>
+                            <div>
+                                <input type="tel" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <div>
+                                <input type="email" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                     
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Designation</label>
+                                    <div>
+                                        <input type="text" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">NIC / Passport</label>
+                                    <div>
+                                        <input type="text" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group add-btn-div">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary add-btn-modal">
+                                            Add 
+                                        </button>
+                                    </div>
+                                </div>
+                             </div>
+                            </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+</div>

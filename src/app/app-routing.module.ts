@@ -1,3 +1,4 @@
+import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
 import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
 import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
 import { NgModule } from '@angular/core';
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'checked-out-visitors',
         component :CheckedOutVisitorsComponent,
+      },
+      {
+        path: 'manage-staff',
+        component :ManageStaffComponent,
       },
 
        {
