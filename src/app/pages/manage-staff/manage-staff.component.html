@@ -26,18 +26,19 @@
        <thead>
          <tr>
            
-           <th scope="col">Title</th>
-           <th scope="col">Address</th>
+           <th scope="col">First Name</th>
+           <th scope="col">Last Name</th>
            <th scope="col">Tel</th>
            <th scope="col">Email</th>
-           <th scope="col">Floor</th>
+           <th scope="col">Designation</th>
+           <th scope="col">NIC / Passport</th>
            <th scope="col">Action</th>
             </tr>
        </thead>
        <tbody *ngFor="let visiteda of pageOfItems">
          <tr>
           <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastName}}</td>
+           <td>{{visiteda.lastname}}</td>
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
            <td>{{visiteda.designation}}</td>
