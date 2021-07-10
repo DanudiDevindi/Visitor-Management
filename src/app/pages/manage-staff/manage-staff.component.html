@@ -36,11 +36,12 @@
        </thead>
        <tbody *ngFor="let visiteda of pageOfItems">
          <tr>
-          <td>{{visiteda.title}}</td>
-           <td>{{visiteda.address}}</td>
+          <td>{{visiteda.firstname}}</td>
+           <td>{{visiteda.lastName}}</td>
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
-           <td>{{visiteda.floor}}</td>
+           <td>{{visiteda.designation}}</td>
+           <td>{{}visiteda.nicpassport}</td>
            <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editemployee">Edit</button></td>
 <!-- 
            modal for edit employee -->
