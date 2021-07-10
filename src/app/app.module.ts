@@ -16,6 +16,7 @@ import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-
 import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
 import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
+import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ManageStaffComponent } from './pages/manage-staff/manage-staff.componen
     OverdueCheckedInComponent,
     CheckedOutVisitorsComponent,
     ManageStaffComponent,
+    ManageSystemUsersComponent,
     
   ],
   imports: [

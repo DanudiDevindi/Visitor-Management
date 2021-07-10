@@ -58,6 +58,13 @@ const MENUITEMS = [
 
 },
 {
+  state: 'manage-system-users',
+  short_label: 'C',
+  name: 'Manage System Users',
+  type: 'link',
+
+},
+{
   state: 'checked-in-visitors',
   short_label: 'C',
   name: 'Checked In Visitors',

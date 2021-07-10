@@ -1,3 +1,4 @@
+import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
 import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checked-out-visitors.component';
 import { OverdueCheckedInComponent } from './pages/overdue-checked-in/overdue-checked-in.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'manage-staff',
         component :ManageStaffComponent,
+      },
+      {
+      path: 'manage-system-users',
+      component: ManageSystemUsersComponent,
       },
 
        {
