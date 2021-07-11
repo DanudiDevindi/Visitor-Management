@@ -24,6 +24,11 @@ export class ManageSystemUsersComponent implements OnInit {
     
 
   ]
+
+  public show:boolean = false;
+  toggle() {
+    this.show = !this.show;
+  }
   pageOfItems: Array<any>;
  onChangePage(pageOfItems: Array<any>) {
   // update current page of items
