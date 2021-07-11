@@ -1,0 +1,58 @@
+.header-title{
+    font-weight: 700;
+    padding-bottom: 2%;
+}
+.search-btn{
+    margin-top: -1%;
+    position: relative;
+    width: 89%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.table-card{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.table-responsive {
+    padding-bottom: 5%;
+}
+.add-resep-btn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btn-rec{
+    text-align: end;
+}
+.edit-btn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 35%;
+    margin-left: 3%;
+}
+.model-header-title{
+   margin-top: 3%;
+   margin-left: 2%;
+   font-weight: 700;
+}
+.add-btn-div{
+    text-align: end;
+}
+.add-btn-modal{
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+.update-btn-align{
+    width: 68%;
+}
+.floor-btn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 780px) {
+    .edit-btn{
+        width: 50%;
+    }
+    .update-btn-align{
+        width: 100%;
+    }
+}
+
+

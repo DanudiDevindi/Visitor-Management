@@ -18,6 +18,7 @@ import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checke
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
 import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ManageStaffComponent,
     ManageSystemUsersComponent,
     DashboardComponent,
+    ManageBuildingsComponent,
     
   ],
   imports: [
