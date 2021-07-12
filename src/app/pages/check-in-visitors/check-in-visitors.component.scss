@@ -19,7 +19,9 @@
     font-weight: 700;
     padding-bottom: 2%;
 }
-
+.ng-autocomplete{
+    width: 99% !important;
+}
 @media screen and (max-width: 1200px) {
     .search-btn{
         margin-top: 21%;

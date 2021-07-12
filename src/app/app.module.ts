@@ -1,3 +1,4 @@
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
@@ -29,7 +30,8 @@ import { JwPaginationComponent, JwPaginationModule } from 'jw-angular-pagination
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    JwPaginationModule
+    JwPaginationModule,
+    AutocompleteLibModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

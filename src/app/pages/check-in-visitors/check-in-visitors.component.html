@@ -4,7 +4,7 @@
     <div class="col-lg-6 col-md-12 col-sm-12 check-in-visitor">
         <form class="check-in-visitor-form">
             <div class="form-headers">Staff Details</div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
                     <label for="Staff member">Staff member</label>
                     <input type="text" class="form-control" id="staffMember" placeholder="Search by Name,mobile"required>
@@ -15,6 +15,30 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
                  <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
+            </div> -->
+            <div class="mb-3">
+            <div class="form-group">
+                <div class="ng-autocomplete tf-background-autocompleate">
+                    <label>Enter Product Name</label>
+                    <ng-autocomplete
+                            [data]="data"
+                            [searchKeyword]="keyword"
+                            (selected)='selectEvent($event)'
+                            (inputChanged)='onChangeSearch($event)'
+                            (inputFocused)='onFocused($event)'
+                            [itemTemplate]="itemTemplate"
+                            [notFoundTemplate]="notFoundTemplate">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+            </div>
             </div>
             
             <div class="mb-3">

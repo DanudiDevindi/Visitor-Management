@@ -97,6 +97,47 @@ export class CheckInVisitorsComponent implements OnInit {
   this.pageOfItems = pageOfItems;
 }
 
+
+keyword = 'name';
+    data = [
+        {
+            id: 1,
+            name: 'Usa'
+        },
+        {
+            id: 2,
+            name: 'England'
+        },
+        {
+            id: 3,
+            name: 'Englanssd'
+        },
+        {
+            id: 4,
+            name: 'Engladddnd'
+        },
+        {
+            id: 5,
+            name: 'Englanffffd'
+        }
+    ];
+
+  
+
+
+    selectEvent(item) {
+        // do something with selected item
+    }
+
+    onChangeSearch(val: string) {
+        // fetch remote data from here
+        // And reassign the 'data' which is binded to 'data' property.
+    }
+
+    onFocused(e) {
+        // do something when input is focused
+    }
+
   ngOnInit() {
   }
 
