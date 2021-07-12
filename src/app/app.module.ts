@@ -21,6 +21,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildi
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    JwPaginationModule
+    JwPaginationModule,
+   
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

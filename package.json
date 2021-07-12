@@ -23,6 +23,7 @@
     "@angular/router": "^8.2.3",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
     "@nicky-lenaers/ngx-scroll-to": "^3.0.1",
+    "angular-ng-autocomplete": "^2.0.5",
     "angular2-chartjs": "^0.5.1",
     "angular2-notifications": "^0.7.4",
     "bootstrap": "^4.0.0",
