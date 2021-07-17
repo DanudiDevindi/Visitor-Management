@@ -18,7 +18,7 @@
             <i class="ti-menu"></i>
           </a>
           <a [routerLink]="['/']">
-            <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo"/>
+            <img class="img-fluid" src="assets/images/logo.png" alt="Visito"/>
           </a>
           <a (click)="onMobileMenu()" class="mobile-options">
             <i class="ti-more"></i>
@@ -36,7 +36,7 @@
                   <i class="ti-fullscreen"></i>
                 </a>
               </li>
-              <li class="mega-menu-top">
+              <!-- <li class="mega-menu-top">
                 <a href="javascript:;">
                   Mega
                   <i class="ti-angle-down"></i>
@@ -153,10 +153,10 @@
                     </div>
                   </li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
             <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
-              <li class="header-notification lng-dropdown">
+              <!-- <li class="header-notification lng-dropdown">
                 <a href="javascript:;" id="dropdown-active-item">
                   <img src="assets/images/flags/ENGLISH.jpg" alt=""> English
                 </a>
@@ -182,8 +182,8 @@
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li class="header-notification">
+              </li> -->
+              <!-- <li class="header-notification">
                 <a href="javascript:;">
                   <i class="ti-bell"></i>
                   <span class="badge bg-c-pink"></span>
@@ -224,40 +224,39 @@
                     </div>
                   </li>
                 </ul>
-              </li>
-              <li class="header-notification">
+              </li> -->
+              <!-- <li class="header-notification">
                 <a href="javascript:;" (click)="toggleChat()" class="displayChatbox">
                   <i class="ti-comments"></i>
                   <span class="badge bg-c-green"></span>
                 </a>
-              </li>
+              </li> -->
               <li class="user-profile header-notification">
                 <a [routerLink]="['/']">
-                  <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                  <span>John Doe</span>
+                  <img src="assets\images\login-background-images-clipart-1.jpg" class="img-radius" alt="User-Profile-Image">
                   <i class="ti-angle-down"></i>
                 </a>
                 <ul class="show-notification profile-notification">
-                  <li>
+                  <!-- <li>
                     <a [routerLink]="['/crm-contact']">
                       <i class="ti-settings"></i> Settings
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i> Profile
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <a [routerLink]="['/advance/notifications']">
                       <i class="ti-email"></i> My Messages
                     </a>
-                  </li>
-                  <li>
+                  </li> -->
+                  <!-- <li>
                     <a [routerLink]="['/authentication/lock-screen']" target="_blank">
                       <i class="ti-lock"></i> Lock Screen
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a [routerLink]="['/authentication/login/with-bg-image']">
                       <i class="ti-layout-sidebar-left"></i> Logout
