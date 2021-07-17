@@ -1,3 +1,4 @@
+import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
@@ -54,6 +55,10 @@ const routes: Routes = [
       path: 'manage-system-users',
       component: ManageSystemUsersComponent,
       },
+      {
+        path: 'user-login',
+        component:UserLoginComponent,
+        },
 
        {
         path: 'basic',

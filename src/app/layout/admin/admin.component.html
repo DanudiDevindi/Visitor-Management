@@ -17,8 +17,8 @@
           <a class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()" [exclude]="'#main_navbar'" (clickOutside)="onClickedOutside($event)">
             <i class="ti-menu"></i>
           </a>
-          <a [routerLink]="['/']">
-            <img class="img-fluid" src="assets/images/logo.png" alt="Visito"/>
+          <a [routerLink]="['/dashboard']">
+            <img class="img-fluid logo-img" src="assets\visitologo.jpg" alt="Visito-logo"/>
           </a>
           <a (click)="onMobileMenu()" class="mobile-options">
             <i class="ti-more"></i>
@@ -232,7 +232,7 @@
                 </a>
               </li> -->
               <li class="user-profile header-notification">
-                <a [routerLink]="['/']">
+                <a [routerLink]="['/user-login']">
                   <img src="assets\images\login-background-images-clipart-1.jpg" class="img-radius" alt="User-Profile-Image">
                   <i class="ti-angle-down"></i>
                 </a>
