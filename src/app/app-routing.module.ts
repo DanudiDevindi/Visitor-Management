@@ -56,15 +56,7 @@ const routes: Routes = [
       path: 'manage-system-users',
       component: ManageSystemUsersComponent,
       },
-      {
-<<<<<<< HEAD
-        path: 'user-login',
-        component:UserLoginComponent,
-=======
-        path: 'manage-buldings',
-        component: ManageBuildingsComponent,
->>>>>>> feature/building
-        },
+      
 
        {
         path: 'basic',

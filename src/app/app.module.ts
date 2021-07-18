@@ -1,3 +1,4 @@
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
@@ -49,7 +50,11 @@ import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildi
     AppRoutingModule,
     SharedModule,
     JwPaginationModule,
+<<<<<<< HEAD
    
+=======
+    AutocompleteLibModule
+>>>>>>> feature/check-in-visitors
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
