@@ -6,24 +6,24 @@
         <form class="checked-in-visitor-form">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-                    <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+                    <input type="text" class="form-control" id="visitor-building" placeholder="Search by pass number , visitor's mobile" required>
                     <div class="invalid-feedback">
                         Valid visitor detail is required.
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                 <button type="submit" id="building-visitor-search"class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
             </div>
             </form>
     </div>
     <div class="col-lg-6 btn-rec">
-        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddBuilding">Add Building</button>
+        <button type="submit" id="btn-addbuilding" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddBuilding">Add Building</button>
     </div>
 </div>
 <div class="table-card">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="building-tbl">
        <thead>
          <tr>
            
@@ -41,8 +41,8 @@
            <td>{{visiteda.address}}</td>
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
-           <td><button type="submit" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
-           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button><button type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td>
+           <td><button type="submit" id="btn-floor" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
+           <td><button type="submit" id="btn-building-edit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button><button type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td>
 <!-- 
            modal for edit building -->
            <div id="editbulding" class="modal fade">
@@ -50,7 +50,7 @@
                 <div class="modal-content">
                     <div class="modal-header" style="border: white;">
                         <div class="model-header-title">Update Building</div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -86,7 +86,7 @@
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-group add-btn-div">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary add-btn-modal  update-btn-align">
+                                                        <button type="submit"  id="building-updatebtn"class="btn btn-primary add-btn-modal  update-btn-align">
                                                             Update
                                                         </button>
                                                     </div>
@@ -144,10 +144,10 @@
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-group add-btn-div">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
+                                                        <button type="submit" id="add-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
                                                             Add
                                                         </button>
-                                                        <button type="submit" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="show" >
+                                                        <button type="submit" id="update-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="show" >
                                                             Update
                                                         </button>
                                                     </div>
@@ -160,7 +160,7 @@
                                 </form>
                                 <div class="table-card">
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id="floor-tbl">
                                        <thead>
                                          <tr>
                                            
@@ -174,7 +174,7 @@
                                          <tr>
                                           <td>{{visiteda.title}}</td>
                                            <td>{{visiteda.address}}</td>
-                                        <td><button type="submit" class="btn btn-primary mb-3 edit-btn" id="editbtn" (click)="toggle()">Edit</button><button type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td></tr>
+                                        <td><button type="submit"  id="floor-edit-btn" class="btn btn-primary mb-3 edit-btn" id="editbtn" (click)="toggle()">Edit</button><button id="floor-delete-btn" type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td></tr>
                                         </tbody>
                                         </table>
                                         <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
