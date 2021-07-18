@@ -68,8 +68,8 @@
              </div>
            
          <div class="mb-3">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <label for="name">Email</label>
+                <input type="email" class="form-control" id="email-staff" placeholder="Email" required>
                 <div class="invalid-feedback">
                     valid email is required
                 </div>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                 <button type="submit" id="search-btn" class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
             </div>
             
@@ -163,7 +163,7 @@
            
          <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email-visitor" placeholder="Email" required>
                 <div class="invalid-feedback">
                     valid email is required
                 </div>
@@ -182,12 +182,12 @@
             <div class="row">
                 <div class="col-md-8 mb-3"></div>
             <div class="col-md-4 mb-3" style="text-align: end;">
-                <button type="submit" class="btn btn-primary mb-3 search-btn">Add to list</button>
+                <button type="submit" id="add-to-list-btn" class="btn btn-primary mb-3 search-btn">Add to list</button>
                 </div>
                 </div>
 
                 <div class="table-responsive">
-                     <table class="table" id="dtBasicExample">
+                     <table class="table" id="visitor-details-table">
                     <thead>
                       <tr>
                         <th scope="col">First Name</th>
@@ -214,7 +214,7 @@
                   <div class="row">
                     <div class="col-md-8 mb-3"></div>
                 <div class="col-md-4 mb-3" style="text-align: end;">
-                    <button type="submit" class="btn btn-primary mb-3 search-btn">Submit</button>
+                    <button type="submit"id="visitor-submit-button" class="btn btn-primary mb-3 search-btn">Submit</button>
                     </div>
                     </div>
         </form>
