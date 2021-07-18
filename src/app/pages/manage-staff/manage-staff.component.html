@@ -17,7 +17,7 @@
             </form>
     </div>
     <div class="col-6 btn-rec">
-        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddReceptionist">Add Employee</button>
+        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddEmployee">Add Employee</button>
     </div>
 </div>
 <div class="table-card">
@@ -26,29 +26,36 @@
        <thead>
          <tr>
            
-           <th scope="col">Title</th>
-           <th scope="col">Address</th>
+           <th scope="col">First Name</th>
+           <th scope="col">Last Name</th>
            <th scope="col">Tel</th>
            <th scope="col">Email</th>
-           <th scope="col">Floor</th>
+           <th scope="col">Designation</th>
+           <th scope="col">NIC / Passport</th>
            <th scope="col">Action</th>
             </tr>
        </thead>
        <tbody *ngFor="let visiteda of pageOfItems">
          <tr>
-          <td>{{visiteda.title}}</td>
-           <td>{{visiteda.address}}</td>
+          <td>{{visiteda.firstname}}</td>
+           <td>{{visiteda.lastname}}</td>
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
-           <td>{{visiteda.floor}}</td>
-           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist">Edit</button></td>
+           <td>{{visiteda.designation}}</td>
+           <td>{{visiteda.nicpassport}}</td>
+           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editemployee">Edit</button></td>
 <!-- 
-           modal for edit receptionist -->
-           <div id="editReceptionist" class="modal fade">
+           modal for edit employee -->
+           <div id="editemployee" class="modal fade">
             <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
                 <div class="modal-content">
-                  <div class="model-header-title">Add New Employee</div>
-                <div class="modal-body">
+                    <div class="modal-header" style="border: white;">
+                        <div class="model-header-title">Update Employee</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  <div class="modal-body">
                      <form role="form">
                         <div class="row">
                             <div class="col-md-6">
@@ -149,12 +156,17 @@
      </div>
 
 
-     <!-- Modal for add receptionist -->
-<div id="AddReceptionist" class="modal fade">
+     <!-- Modal for add employee -->
+<div id="AddEmployee" class="modal fade">
     <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
         <div class="modal-content">
-          <div class="model-header-title">Add New Receptionist</div>
-        <div class="modal-body">
+            <div class="modal-header" style="border: white;">
+                <div class="model-header-title">Add New Employee</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          <div class="modal-body">
              <form role="form">
                 <div class="row">
                     <div class="col-md-6">
