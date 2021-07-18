@@ -18,7 +18,12 @@ import { CheckedOutVisitorsComponent } from './pages/checked-out-visitors/checke
 import { ManageStaffComponent } from './pages/manage-staff/manage-staff.component';
 import { ManageSystemUsersComponent } from './pages/manage-system-users/manage-system-users.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 import { UserLoginComponent } from './pages/user-login/user-login.component';
+
+import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
+
+
 
 
 @NgModule({
@@ -36,14 +41,15 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
     ManageSystemUsersComponent,
     DashboardComponent,
     UserLoginComponent,
-    
-  ],
+    ManageBuildingsComponent,
+],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    JwPaginationModule
+    JwPaginationModule,
+   
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

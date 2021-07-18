@@ -55,6 +55,13 @@ const MENUITEMS = [
   type: 'link',
 
 },
+{
+  state: 'manage-buldings',
+  short_label: 'C',
+  name: 'Manage Buildings',
+  type: 'link',
+
+},
 
 
 
