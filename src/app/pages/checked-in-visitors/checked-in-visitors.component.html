@@ -3,20 +3,20 @@
 <form class="checked-in-visitor-form">
     <div class="row">
       <div class="col-lg-5 col-md-8 col-sm-12 mb-3">
-            <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+            <input type="text" class="form-control" id="visitor-checkedIn" placeholder="Search by pass number , visitor's mobile" required>
             <div class="invalid-feedback">
                 Valid visitor detail is required.
             </div>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-         <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+         <button type="submit" id="checked-in-search-btn" class="btn btn-primary mb-3 search-btn">Search</button>
         </div>
     </div>
     </form>
 
     <div class="table-card">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="CheckedInVisitor-table">
        <thead>
          <tr>
            <th scope="col">Checkout</th>
@@ -32,7 +32,7 @@
        </thead>
        <tbody *ngFor="let visiteda of pageOfItems">
          <tr>
-           <td> <button type="submit" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
+           <td> <button type="submit" id="checkoutbtn-checkedInVisitor" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
            <td>{{visiteda.passnumber}}</td>
            <td>{{visiteda.checkedintime}}</td>
            <td>{{visiteda.nicpassport}}</td>
