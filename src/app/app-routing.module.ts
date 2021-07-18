@@ -56,6 +56,14 @@ const routes: Routes = [
       path: 'manage-system-users',
       component: ManageSystemUsersComponent,
       },
+      {
+      path: 'manage-buldings',
+      component: ManageBuildingsComponent,
+      },
+      {
+      path: 'user-login',
+      component: UserLoginComponent,
+      },
       
 
        {

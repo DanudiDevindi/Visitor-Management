@@ -50,11 +50,8 @@ import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildi
     AppRoutingModule,
     SharedModule,
     JwPaginationModule,
-<<<<<<< HEAD
-   
-=======
-    AutocompleteLibModule
->>>>>>> feature/check-in-visitors
+   AutocompleteLibModule
+
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
