@@ -1,0 +1,63 @@
+
+<div class="header-title">Visit History</div>
+<div class="row">
+    <div class="col-6">
+        <form role="form">
+            <div class="form-group">
+                <div class="input-group input-group-alternative">
+                    <input class="form-control datepicker" id="checkoutvisitor-datepicker" placeholder="Start date-End date" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
+                   </div>
+             </div>
+             </form>
+    </div>
+    <div class="col-6">
+        <form class="checked-in-visitor-form">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
+                    <input type="text" class="form-control" id="checkedoutvisitor-search-input" placeholder="Search by pass number , visitor's mobile" required>
+                    <div class="invalid-feedback">
+                        Valid visitor detail is required.
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
+                 <button type="submit" id="checkoutvisitor-serch-btn" class="btn btn-primary mb-3 search-btn">Search</button>
+                </div>
+            </div>
+            </form>
+    </div>
+</div>
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table" id="checkedout-visitor-table">
+       <thead>
+         <tr>
+           
+           <th scope="col">Pass Number</th>
+           <th scope="col">Checked in time</th>
+           <th scope="col">Nic/Passport</th>
+           <th scope="col">First Name</th>
+           <th scope="col">Last Name</th>
+           <th scope="col">Mobile</th>
+           <th scope="col">Email</th>
+           <th scope="col"> Staff Member Name</th>
+           <th scope="col"> Designation</th>
+         </tr>
+       </thead>
+       <tbody *ngFor="let visiteda of pageOfItems">
+         <tr>
+          <td>{{visiteda.passnumber}}</td>
+           <td>{{visiteda.checkedintime}}</td>
+           <td>{{visiteda.nicpassport}}</td>
+           <td>{{visiteda.firstname}}</td>
+           <td>{{visiteda.lastname}}</td>
+           <td>{{visiteda.mobile}}</td>
+           <td>{{visiteda.email}}</td>
+           <td>{{visiteda.staffmembername}}</td>
+           <td>{{visiteda.designation}}</td>
+           
+         </tr>
+        </tbody>
+        </table>
+        <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
+     </div>
+     </div>
