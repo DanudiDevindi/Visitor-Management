@@ -5,7 +5,7 @@
         <form role="form">
             <div class="form-group">
                 <div class="input-group input-group-alternative">
-                    <input class="form-control datepicker" placeholder="Start date-End date" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
+                    <input class="form-control datepicker" id="checkoutvisitor-datepicker" placeholder="Start date-End date" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" type="text"/>
                    </div>
              </div>
              </form>
@@ -14,13 +14,13 @@
         <form class="checked-in-visitor-form">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-                    <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+                    <input type="text" class="form-control" id="checkedoutvisitor-search-input" placeholder="Search by pass number , visitor's mobile" required>
                     <div class="invalid-feedback">
                         Valid visitor detail is required.
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                 <button type="submit" id="checkoutvisitor-serch-btn" class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
             </div>
             </form>
@@ -28,7 +28,7 @@
 </div>
 <div class="table-card">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table" id="checkedout-visitor-table">
        <thead>
          <tr>
            
