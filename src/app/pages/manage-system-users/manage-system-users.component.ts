@@ -10,17 +10,25 @@ export class ManageSystemUsersComponent implements OnInit {
   constructor() { }
   visited = [
     {
-        title: 'ebfhbfhf',
-        address: 'dehyuehfuhfu',
-        tel: '2323232',
+        firstname: 'ebfhbfhf',
+        lastname: 'dehyuehfuhfu',
+        designation: 'jknknkn',
+        nicpassport: '554545',
+        tel: '456454545',
         email:'eygfygyf',
-        floor:'12',
+        username:'1frfgrg2',
+        password:'fhe2121'
         
       },
     
     
 
   ]
+
+  public show:boolean = false;
+  toggle() {
+    this.show = !this.show;
+  }
   pageOfItems: Array<any>;
  onChangePage(pageOfItems: Array<any>) {
   // update current page of items

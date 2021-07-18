@@ -26,28 +26,39 @@
        <thead>
          <tr>
            
-           <th scope="col">Title</th>
-           <th scope="col">Address</th>
+           <th scope="col">First tName</th>
+           <th scope="col">Last Name</th>
+           <th scope="col">Designation</th>
+           <th scope="col">NIC/Passport</th>
            <th scope="col">Tel</th>
            <th scope="col">Email</th>
-           <th scope="col">Floor</th>
+           <th scope="col"> User Name</th>
+           <th scope="col">password</th>
            <th scope="col">Action</th>
             </tr>
        </thead>
        <tbody *ngFor="let visiteda of pageOfItems">
          <tr>
-          <td>{{visiteda.title}}</td>
-           <td>{{visiteda.address}}</td>
+          <td>{{visiteda.firstname}}</td>
+           <td>{{visiteda.lastname}}</td>
+           <td>{{visiteda.designation}}</td>
+           <td>{{visiteda.nicpassport}}</td>
            <td>{{visiteda.tel}}</td>
            <td>{{visiteda.email}}</td>
-           <td>{{visiteda.floor}}</td>
+           <td>{{visiteda.username}}</td>
+           <td>{{visiteda.password}}</td>
            <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist">Edit</button></td>
 <!-- 
            modal for edit receptionist -->
            <div id="editReceptionist" class="modal fade">
             <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
                 <div class="modal-content">
-                  <div class="model-header-title">Update Receptionist</div>
+                 <div class="modal-header" style="border: white;">
+                    <div class="model-header-title">Update Receptionist</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
                 <div class="modal-body">
                      <form role="form">
                         <div class="row">
@@ -96,8 +107,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-md-6">
-                                        <div class="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="toggle()">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Do you want to change the user name and password
+                                            </label>
+                                          </div>
+                                        <div class="row" *ngIf="show">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">User Name</label>
@@ -166,8 +184,13 @@
 <div id="AddReceptionist" class="modal fade">
     <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
         <div class="modal-content">
-          <div class="model-header-title">Add New Receptionist</div>
-        <div class="modal-body">
+            <div class="modal-header" style="border: white;">
+                <div class="model-header-title">Add New Receptionist</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+         <div class="modal-body">
              <form role="form">
                 <div class="row">
                     <div class="col-md-6">
