@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../service/authentication.service';
+import {AuthenticationService} from '../../service/authentication.service';
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  private _login(){
+  _login(){
     if (this.username !== ''){
       if (this.userPassword !== ''){
         this.authService.userLogin(this.username,this.userPassword);
