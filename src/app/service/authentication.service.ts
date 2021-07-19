@@ -36,4 +36,12 @@ export class AuthenticationService {
       alert('Invalid Login!');
     });
   }
+
+  public logOut(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('token_type');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('userType');
+    this.router.navigate(['user-login']);
+  }
 }

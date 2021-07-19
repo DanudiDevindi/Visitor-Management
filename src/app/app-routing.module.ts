@@ -13,6 +13,7 @@ import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
 
 const routes: Routes = [
+  {path: 'user-login',component:UserLoginComponent},
   {
     path: '',
     component: AdminComponent,
@@ -21,12 +22,12 @@ const routes: Routes = [
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'
-      }, 
+      },
       // {
       //   path: 'dashboard',
       //   loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)
       // },
-      
+
       //start create new component routings
       {
         path: 'dashboard',
@@ -60,11 +61,11 @@ const routes: Routes = [
       path: 'manage-buldings',
       component: ManageBuildingsComponent,
       },
-      {
-      path: 'user-login',
-      component: UserLoginComponent,
-      },
-      
+      // {
+      // path: 'user-login',
+      // component: UserLoginComponent,
+      // },
+
 
        {
         path: 'basic',

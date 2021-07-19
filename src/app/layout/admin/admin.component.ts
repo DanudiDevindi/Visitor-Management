@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
 import {MenuItems} from '../../shared/menu-items/menu-items';
+import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-admin',
@@ -101,7 +102,8 @@ export class AdminComponent implements OnInit {
 
   public config: any;
 
-  constructor(public menuItems: MenuItems) {
+  constructor(public menuItems: MenuItems,
+              private authenticateService : AuthenticationService) {
     this.navType = 'st5';
     this.themeLayout = 'vertical';
     this.vNavigationView = 'view1';
@@ -289,4 +291,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  _logOut(){
+    this.authenticateService.logOut();
+  }
 }
