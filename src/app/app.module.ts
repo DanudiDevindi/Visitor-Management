@@ -23,6 +23,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -44,15 +46,17 @@ import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildi
     UserLoginComponent,
     ManageBuildingsComponent,
 ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    SharedModule,
-    JwPaginationModule,
-   AutocompleteLibModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        SharedModule,
+        JwPaginationModule,
+        AutocompleteLibModule,
+        FormsModule,
+      HttpClientModule
 
-  ],
+    ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
