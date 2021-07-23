@@ -59,10 +59,8 @@ export class ManageStaffComponent implements OnInit {
 
   _getSystemStaff() {
     this.systemEmployeeService.getEmployeeList('', 0).subscribe((data: Object[]) => {
-      console.log(data)
       this.employeeList = data['body'].content
     }, error => {
-      alert("Records Not Found")
       this.notification.showError("Records Not Found","")
     })
   }
@@ -70,12 +68,12 @@ export class ManageStaffComponent implements OnInit {
   _createNewEmployee(){
    this.systemEmployeeService.createEmployee(this.empFirstName,this.empLastName,this.empNic,this.empEmail,this.empMobile,this.empDesignation).subscribe((data)=>{
      if (data['success']){
-       alert('Employee Added Success')
+       this.notification.showSuccess("Employee Added Success","");
      }else{
-       alert('Employee Added Failed')
+       this.notification.showError("Employee Added Failed","")
      }
    },error => {
-     alert("Employee Added Failed");
+     this.notification.showError("Employee Added Failed","")
    })
   }
 
@@ -84,7 +82,7 @@ export class ManageStaffComponent implements OnInit {
      this.systemEmployeeService.getEmployeeList(this.customSearchText,0).subscribe((data:Object[])=>{
        this.employeeList = data['body'].content;
      },error => {
-       alert("Records Not Found");
+       this.notification.showError("Records Not Found","")
      });
    }else {
      this._getSystemStaff();
@@ -106,14 +104,14 @@ export class ManageStaffComponent implements OnInit {
      this.empUpdateNic,this.empUpdateEmail,this.empUpdateMobile,this.empUpdateDesignation)
      .subscribe((data)=>{
      if (data['success']){
-       alert('Employee Update success');
+       this.notification.showSuccess("Employee Update Success","");
        this._getSystemStaff();
      }else {
-       alert('Employee Update Failed');
+       this.notification.showError("Employee Update Failed","");
      }
    },
      error => {
-       alert('Employee Update Failed');
+       this.notification.showError("Employee Update Failed","");
      });
   }
 
