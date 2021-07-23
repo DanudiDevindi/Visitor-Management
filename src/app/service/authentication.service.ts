@@ -31,7 +31,12 @@ export class AuthenticationService {
       localStorage.setItem('token_type',data['token_type']);
       localStorage.setItem('user_id',data['user_id']);
       localStorage.setItem('userType',data['user']['role']);
-      this.router.navigate(['/dashboard']);
+      let userType = data['user']['role'];
+      if (userType === "ADMIN"){
+        this.router.navigate(['/dashboard']);
+      }else if (userType === "RECEP"){
+        this.router.navigate(['/dashboard']);
+      }
     },error => {
       alert('Invalid Login!');
     });
@@ -43,5 +48,9 @@ export class AuthenticationService {
     localStorage.removeItem('user_id');
     localStorage.removeItem('userType');
     this.router.navigate(['user-login']);
+  }
+
+  public checkCredentials() {
+    return localStorage.getItem('access_token');
   }
 }

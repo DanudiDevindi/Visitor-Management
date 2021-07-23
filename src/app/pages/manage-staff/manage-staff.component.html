@@ -25,26 +25,26 @@
         <table class="table">
        <thead>
          <tr>
-           
+
            <th scope="col">First Name</th>
            <th scope="col">Last Name</th>
            <th scope="col">Tel</th>
            <th scope="col">Email</th>
            <th scope="col">Designation</th>
-           <th scope="col">NIC / Passport</th>
+           <th scope="col">NIC</th>
            <th scope="col">Action</th>
             </tr>
        </thead>
-       <tbody *ngFor="let visiteda of pageOfItems">
+       <tbody *ngFor="let employee of employeeList">
          <tr>
-          <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastname}}</td>
-           <td>{{visiteda.tel}}</td>
-           <td>{{visiteda.email}}</td>
-           <td>{{visiteda.designation}}</td>
-           <td>{{visiteda.nicpassport}}</td>
+          <td>{{employee.firstName}}</td>
+           <td>{{employee.lastName}}</td>
+           <td>{{employee.mobile}}</td>
+           <td>{{employee.email}}</td>
+           <td>{{employee.designation}}</td>
+           <td>{{employee.nic}}</td>
            <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editemployee">Edit</button></td>
-<!-- 
+<!--
            modal for edit employee -->
            <div id="editemployee" class="modal fade">
             <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             </div>
-                             
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -138,7 +138,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                      
+
                                         </div>
                                      </div>
                                     </div>
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-           
+
          </tr>
         </tbody>
         </table>
@@ -173,7 +173,7 @@
                         <div class="form-group">
                             <label class="control-label">First Name</label>
                             <div>
-                                <input type="text" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
+                                <input type="text" class="form-control input-lg" [(ngModel)]="empFirstName" name="empFirstName" id="first_name" placeholder="First Name">
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                         <div class="form-group">
                             <label class="control-label">Tel</label>
                             <div>
-                                <input type="tel" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
+                                <input type="tel" class="form-control input-lg" [(ngModel)]="empMobile" name="empMobile" id="telephone" placeholder="Tel" value="">
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
                             <div>
-                                <input type="tel" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
+                                <input type="text" [(ngModel)]="empLastName" name="empLastName" class="form-control input-lg" id="last_name" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
@@ -199,18 +199,18 @@
                         <div class="form-group">
                             <label class="control-label">Email</label>
                             <div>
-                                <input type="email" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
+                                <input type="email" [(ngModel)]="empEmail" name="empEmail" class="form-control input-lg"  id="emp_email" placeholder="Email">
                             </div>
                         </div>
                     </div>
                     </div>
-                     
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Designation</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
+                                        <input type="text" [(ngModel)]="empDesignation" name="empDesignation" class="form-control input-lg" placeholder="Designation" id="emp_designation">
                                     </div>
                                 </div>
                             </div>
@@ -218,17 +218,17 @@
                          <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">NIC / Passport</label>
+                                    <label class="control-label">NIC </label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
+                                        <input type="text" [(ngModel)]="empNic" class="form-control input-lg" id="emp_nic" placeholder="NIC " name="empNic">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group add-btn-div">
                                     <div>
-                                        <button type="submit" class="btn btn-primary add-btn-modal">
-                                            Add 
+                                        <button type="button" (click)="_createNewEmployee()" class="btn btn-primary add-btn-modal">
+                                            Add
                                         </button>
                                     </div>
                                 </div>
