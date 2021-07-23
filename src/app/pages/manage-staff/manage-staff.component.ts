@@ -17,6 +17,16 @@ export class ManageStaffComponent implements OnInit {
   empDesignation : string;
   empNic : string;
 
+  empId : number;
+  empUpdateFirstName : string;
+  empUpdateLastName : string;
+  empUpdateMobile : string;
+  empUpdateEmail : string;
+  empUpdateDesignation : string;
+  empUpdateNic : string;
+
+  customSearchText : string
+
   constructor(private systemEmployeeService : SystemEmployeeService) { }
   visited = [
     {
@@ -47,7 +57,6 @@ export class ManageStaffComponent implements OnInit {
 
   _getSystemStaff(){
     this.systemEmployeeService.getEmployeeList('',0).subscribe((data:Object[])=>{
-      console.log(data);
       this.employeeList = data['body'].content;
     },error => {
       alert("Records Not Found");
@@ -56,11 +65,52 @@ export class ManageStaffComponent implements OnInit {
 
   _createNewEmployee(){
    this.systemEmployeeService.createEmployee(this.empFirstName,this.empLastName,this.empNic,this.empEmail,this.empMobile,this.empDesignation).subscribe((data)=>{
-     console.log(data['success']);
      if (data['success']){
-       console.log('aaa')
+       alert('Employee Added Success')
+     }else{
+       alert('Employee Added Failed')
      }
+   },error => {
+     alert("Employee Added Failed");
    })
+  }
+
+  employeeCustomSearch(){
+   if (this.customSearchText !== ''){
+     this.systemEmployeeService.getEmployeeList(this.customSearchText,0).subscribe((data:Object[])=>{
+       this.employeeList = data['body'].content;
+     },error => {
+       alert("Records Not Found");
+     });
+   }else {
+     this._getSystemStaff();
+   }
+  }
+
+  _loadEmployeeDetails(id,firstName,lastName,nic,email,mobile,designation){
+   this.empId = id;
+   this.empUpdateFirstName = firstName;
+   this.empUpdateLastName = lastName;
+   this.empUpdateNic = nic;
+   this.empUpdateEmail = email;
+   this.empUpdateMobile = mobile;
+    this.empUpdateDesignation = designation;
+  }
+
+  _updateEmployee(){
+   this.systemEmployeeService.updateEmployee(this.empId,this.empUpdateFirstName,this.empUpdateLastName,
+     this.empUpdateNic,this.empUpdateEmail,this.empUpdateMobile,this.empUpdateDesignation)
+     .subscribe((data)=>{
+     if (data['success']){
+       alert('Employee Update success');
+       this._getSystemStaff();
+     }else {
+       alert('Employee Update Failed');
+     }
+   },
+     error => {
+       alert('Employee Update Failed');
+     });
   }
 
 }
