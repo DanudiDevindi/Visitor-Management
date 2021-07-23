@@ -25,6 +25,7 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr'
 
 
 
@@ -54,8 +55,8 @@ import {HttpClientModule} from '@angular/common/http';
         JwPaginationModule,
         AutocompleteLibModule,
         FormsModule,
-      HttpClientModule
-
+      HttpClientModule,
+      ToastrModule.forRoot()
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
