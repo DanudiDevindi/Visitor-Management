@@ -5,13 +5,13 @@
         <form class="checked-in-visitor-form">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-                    <input type="text" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
+                    <input type="text" [(ngModel)]="customSearchText" name="customSearchText" (ngModelChange)="_usersCustomSearch()" class="form-control" id="visitor" placeholder="Search by pass number , visitor's mobile" required>
                     <div class="invalid-feedback">
                         Valid visitor detail is required.
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
+                 <button type="button" class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
             </div>
             </form>
@@ -33,21 +33,22 @@
            <th scope="col">Tel</th>
            <th scope="col">Email</th>
            <th scope="col"> User Name</th>
-           <th scope="col">password</th>
+           <th scope="col">Status</th>
            <th scope="col">Action</th>
             </tr>
        </thead>
-       <tbody *ngFor="let visiteda of pageOfItems">
+       <tbody *ngFor="let reception of receptionList">
          <tr>
-          <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastname}}</td>
-           <td>{{visiteda.designation}}</td>
-           <td>{{visiteda.nicpassport}}</td>
-           <td>{{visiteda.tel}}</td>
-           <td>{{visiteda.email}}</td>
-           <td>{{visiteda.username}}</td>
-           <td>{{visiteda.password}}</td>
-           <td><button type="submit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist">Edit</button></td>
+          <td>{{reception.firstName}}</td>
+           <td>{{reception.lastName}}</td>
+           <td>{{reception.role}}</td>
+           <td>{{reception.nic}}</td>
+           <td>{{reception.mobile}}</td>
+           <td>{{reception.email}}</td>
+           <td>{{reception.userName}}</td>
+           <td>{{reception.status}}</td>
+           <td><button type="button" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist"
+           (click)="_loadReceptionDetails(reception.userId,reception.userName,reception.firstName,reception.lastName,reception.nic,reception.email,reception.mobile,reception.password,reception.status,reception.role)">Edit</button></td>
 <!--
            modal for edit receptionist -->
            <div id="editReceptionist" class="modal fade">
@@ -66,7 +67,7 @@
                                 <div class="form-group">
                                     <label class="control-label">First Name</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
+                                        <input type="text" [(ngModel)]="updateFirstName" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName">
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +75,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Tel</label>
                                     <div>
-                                        <input type="tel" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
+                                        <input type="tel" [(ngModel)]="updateMobile" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +85,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Last Name</label>
                                     <div>
-                                        <input type="tel" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
+                                        <input type="text" [(ngModel)]="updateLastName" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +93,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Email</label>
                                     <div>
-                                        <input type="email" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
+                                        <input type="email" [(ngModel)]="updateEmail" class="form-control input-lg" name="email" id="email" placeholder="Email" value="">
                                     </div>
                                 </div>
                             </div>
@@ -100,12 +101,12 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Designation</label>
-                                            <div>
-                                                <input type="text" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
-                                            </div>
+                                      <div class="form-group">
+                                        <label class="control-label">NIC</label>
+                                        <div>
+                                          <input type="text" class="form-control input-lg" [(ngModel)]="updateNic" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
                                         </div>
+                                      </div>
                                     </div>
 
                                     <div class="col-md-6">
@@ -120,7 +121,7 @@
                                         <div class="form-group">
                                             <label class="control-label">User Name</label>
                                             <div>
-                                                <input type="text" class="form-control input-lg" name="username" placeholder="User Name" id="username" value="">
+                                                <input type="text" [(ngModel)]="updateUsername" class="form-control input-lg" name="username" placeholder="User Name" id="update-username" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +129,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Password</label>
                                             <div>
-                                                <input type="text" class="form-control input-lg" name="password" placeholder="Password" id="password" value="">
+                                                <input type="password" [(ngModel)]="updatePassword" class="form-control input-lg" name="password" placeholder="Password" id="password" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -137,26 +138,21 @@
                                  </div>
                                  <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">NIC / Passport</label>
-                                            <div>
-                                                <input type="text" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <!-- Default checked -->
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="accepted" [(ngModel)]="accepted" (change)="checkValue(accepted?true:false)">
                 <label class="custom-control-label" for="customSwitch1">Active</label>
               </div>
                          </div>
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-group add-btn-div">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary add-btn-modal  update-btn-align">
+                                                        <button type="button" (click)="_updateUser()" class="btn btn-primary add-btn-modal  update-btn-align">
                                                             Update
                                                         </button>
                                                     </div>
@@ -197,7 +193,7 @@
                         <div class="form-group">
                             <label class="control-label">First Name</label>
                             <div>
-                                <input type="text" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
+                                <input type="text" class="form-control input-lg" [(ngModel)]="firstName" id="first-name" placeholder="First Name" name="firstName" value="">
                             </div>
                         </div>
                     </div>
@@ -205,7 +201,7 @@
                         <div class="form-group">
                             <label class="control-label">Tel</label>
                             <div>
-                                <input type="tel" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
+                                <input type="tel" class="form-control input-lg" [(ngModel)]="mobile" name="mobile" id="mobile" placeholder="Tel" value="">
                             </div>
                         </div>
                     </div>
@@ -215,7 +211,7 @@
                         <div class="form-group">
                             <label class="control-label">Last Name</label>
                             <div>
-                                <input type="tel" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
+                                <input type="text" class="form-control input-lg" [(ngModel)]="lastName" name="lastName" id="last-name" placeholder="Last Name" value="">
                             </div>
                         </div>
                     </div>
@@ -223,7 +219,7 @@
                         <div class="form-group">
                             <label class="control-label">Email</label>
                             <div>
-                                <input type="email" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
+                                <input type="email" class="form-control input-lg" [(ngModel)]="email" name="email" id="u_email" placeholder="Email" value="">
                             </div>
                         </div>
                     </div>
@@ -231,12 +227,12 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Designation</label>
-                                    <div>
-                                        <input type="text" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
-                                    </div>
+                              <div class="form-group">
+                                <label class="control-label">NIC</label>
+                                <div>
+                                  <input type="text" class="form-control input-lg" id="nic" [(ngModel)]="nic" placeholder="NIC / Passport" name="nic">
                                 </div>
+                              </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
@@ -244,7 +240,7 @@
                                 <div class="form-group">
                                     <label class="control-label">User Name</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" name="username" placeholder="User Name" id="username" value="">
+                                        <input type="text" class="form-control input-lg" [(ngModel)]="username" name="username" placeholder="User Name" id="userName" value="">
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +248,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Password</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" name="password" placeholder="Password" id="password" value="">
+                                        <input type="password" class="form-control input-lg" [(ngModel)]="password" name="password" placeholder="Password" id="u_password" value="">
                                     </div>
                                 </div>
                             </div>
@@ -261,17 +257,12 @@
                          </div>
                          <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">NIC / Passport</label>
-                                    <div>
-                                        <input type="text" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group add-btn-div">
                                     <div>
-                                        <button type="submit" class="btn btn-primary add-btn-modal">
+                                        <button type="button" (click)="_createReception()" class="btn btn-primary add-btn-modal">
                                             Add
                                         </button>
                                     </div>
