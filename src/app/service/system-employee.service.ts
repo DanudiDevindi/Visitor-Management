@@ -46,4 +46,28 @@ export class SystemEmployeeService {
     return this.httpClient.post(url,data,{headers});
 
   }
+
+  public updateEmployee(id,firstName,lastName,nic,email,mobile,designation){
+    let url = `${this.BASE_URL+'v1/employee/update'}`;
+
+    let data = {
+      employeeId : id,
+      firstName : firstName,
+      lastName : lastName,
+      nic : nic,
+      email : email,
+      mobile : mobile,
+      designation : designation
+    }
+
+    let token = localStorage.getItem('access_token');
+
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token,
+        'Content-Type': 'application/json'
+      });
+
+    return this.httpClient.put(url,data,{headers});
+  }
 }

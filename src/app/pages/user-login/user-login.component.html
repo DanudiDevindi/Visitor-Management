@@ -5,17 +5,18 @@
 
 <body style="background: #214a80;">
     <div class="login-dark" style="height: 695px;">
-        <form>
+        <form (ngSubmit)="_login()">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group">
               <input class="form-control" [(ngModel)]="username" id="login-username" type="text" name="username" placeholder="UserName">
+              <span id="user-name-error"></span>
             </div>
             <div class="form-group">
               <input class="form-control" [(ngModel)]="userPassword" id="login-password" type="password" name="userPassword" placeholder="Password">
             </div>
             <div class="form-group">
-              <button type="submit" (click)="_login()" id="login-btn" class="btn btn-primary btn-block">Log In</button>
+              <button type="submit" id="login-btn" class="btn btn-primary btn-block">Log In</button>
             </div>
             <a class="forgot" href="#" id="link-fogotpw">Forgot your email or password?</a>
         </form>
