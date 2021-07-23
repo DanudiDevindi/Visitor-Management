@@ -27,7 +27,8 @@
                             (inputChanged)='onChangeSearch($event)'
                             (inputFocused)='onFocused($event)'
                             [itemTemplate]="itemTemplate"
-                            [notFoundTemplate]="notFoundTemplate">
+                            [notFoundTemplate]="notFoundTemplate"
+                    [(ngModel)]="staffModel.employeeCode">
                     </ng-autocomplete>
 
                     <ng-template #itemTemplate let-item>
@@ -40,10 +41,10 @@
                 </div>
             </div>
             </div>
-            
+
             <div class="mb-3">
-                <label for="email">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name"  name="name" [(ngModel)]="staffModel.employeeName">
                 <div class="invalid-feedback">
                     Valid name is required
                 </div>
@@ -52,7 +53,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                     <label for="telephoneNo">Telephone</label>
-                    <input type="tel" class="form-control" id="telephoneNo" placeholder="Telephone No"
+                    <input type="tel" class="form-control" id="telephoneNo" placeholder="Telephone No" [(ngModel)]="staffModel.telephoneNo"
                            required>
                     <div class="invalid-feedback">
                         Valid telephone no is required.
@@ -60,16 +61,16 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="designation">Designation</label>
-                    <input type="text" class="form-control" id="designation" placeholder="Designation" required>
+                    <input type="text" class="form-control" id="designation" placeholder="Designation" [(ngModel)]="staffModel.designation" required>
                     <div class="invalid-feedback">
                         Valid designation is required.
                     </div>
                 </div>
              </div>
-           
+
          <div class="mb-3">
-                <label for="name">Email</label>
-                <input type="email" class="form-control" id="email-staff" placeholder="Email" required>
+                <label for="email-staff">Email</label>
+                <input type="email" class="form-control" id="email-staff" placeholder="Email" [(ngModel)]="staffModel.email" required>
                 <div class="invalid-feedback">
                     valid email is required
                 </div>
@@ -79,7 +80,8 @@
 
             <div class="mb-3">
                     <label for="building">Building</label>
-                    <select class="custom-select d-block w-100" id="building" required>
+                    <select class="custom-select d-block w-100" id="building" [(ngModel)]="staffModel.building"
+                            [ngModelOptions]="{ standalone: true }" required>
                         <option value="">Choose...</option>
                         <option>Abcd</option>
                         <option>dfccc</option>
@@ -91,7 +93,7 @@
             </div>
             <div class="mb-3">
                 <label for="floor">Floor</label>
-                <select class="custom-select d-block w-100" id="floor" required>
+                <select class="custom-select d-block w-100" id="floor" [(ngModel)]="staffModel.floor" required>
                     <option value="">Choose...</option>
                     <option>bcd</option>
                 </select>
@@ -102,7 +104,7 @@
         <div class="form-headers">Visit Purpose</div>
         <div class="mb-3">
             <label for="visitPurpose">Purpose</label>
-            <select class="custom-select d-block w-100" id="visitPurpose" required>
+            <select class="custom-select d-block w-100" id="visitPurpose" [(ngModel)]="visitorModel.purpose" required>
                 <option value="">Choose...</option>
                 <option></option>
             </select>
@@ -129,18 +131,18 @@
                  <button type="submit" id="search-btn" class="btn btn-primary mb-3 search-btn">Search</button>
                 </div>
             </div>
-            
+
            <div class="row">
               <div class="col-md-6 mb-3">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                    <input type="text" class="form-control" id="firstName" name="first-name" placeholder="First Name" [(ngModel)]="visitorModel.firstName" required>
                     <div class="invalid-feedback">
                         Valid firstName is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                    <input type="text" class="form-control" id="lastName" name="last-name" placeholder="Last Name" [(ngModel)]="visitorModel.lastName" required>
                     <div class="invalid-feedback">
                         Valid lastName is required.
                     </div>
@@ -149,23 +151,23 @@
              <div class="row">
                 <div class="col-md-6 mb-3">
                       <label for="nicPassport">NIC/Passport</label>
-                      <input type="text" class="form-control" id="nicPassport" placeholder="NIC / Passport" required>
+                      <input type="text" class="form-control" id="nicPassport" name="nic" placeholder="NIC / Passport" [(ngModel)]="visitorModel.nicPassport" required>
                       <div class="invalid-feedback">
                           Valid nic Passport is required.
                       </div>
                   </div>
                   <div class="col-md-6 mb-3">
                       <label for="mobile">Mobile</label>
-                      <input type="tel" class="form-control" id="mobile" placeholder="Mobile" required>
+                      <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Mobile" [(ngModel)]="visitorModel.mobile" required>
                       <div class="invalid-feedback">
                           Valid mobile is required.
                       </div>
                   </div>
                </div>
-           
+
          <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email-visitor" placeholder="Email" required>
+                <input type="email" class="form-control" id="email-visitor" name="email" placeholder="Email" [(ngModel)]="visitorModel.email" required>
                 <div class="invalid-feedback">
                     valid email is required
                 </div>
@@ -184,7 +186,7 @@
             <div class="row">
                 <div class="col-md-8 mb-3"></div>
             <div class="col-md-4 mb-3" style="text-align: end;">
-                <button type="submit" id="add-to-list-btn" class="btn btn-primary mb-3 search-btn">Add to list</button>
+                <button type="button" id="add-to-list-btn" class="btn btn-primary mb-3 search-btn" (click)="addToCheckinList()">Add to list</button>
                 </div>
                 </div>
 
@@ -198,7 +200,7 @@
                         <th scope="col">Remove</th>
                       </tr>
                     </thead>
-                    <tbody *ngFor="let visitors of pageOfItems ">
+                    <tbody *ngFor="let visitors of pageOfItems">
                       <tr>
                         <td>{{visitors.firstName}}</td>
                         <td>{{visitors.nicPassport}}</td>
@@ -211,16 +213,16 @@
                       </tr>
                      </tbody>
                      </table>
-                     <jw-pagination [items]="visit" (changePage)="onChangePage($event)"></jw-pagination>
+                     <jw-pagination [items]="checkinList" (changePage)="onChangePage($event)"></jw-pagination>
                   </div>
                   <div class="row">
                     <div class="col-md-8 mb-3"></div>
                 <div class="col-md-4 mb-3" style="text-align: end;">
-                    <button type="submit"id="visitor-submit-button" class="btn btn-primary mb-3 search-btn">Submit</button>
+                    <button type="button"id="visitor-submit-button" (click)="checkin()" class="btn btn-primary mb-3 search-btn">Submit</button>
                     </div>
                     </div>
         </form>
-        
+
     </div>
 </div>
 </div>
