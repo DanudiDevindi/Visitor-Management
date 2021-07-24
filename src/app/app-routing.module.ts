@@ -13,16 +13,12 @@ import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'user-login', pathMatch: 'full'},
   {path: 'user-login',component:UserLoginComponent},
   {
     path: '',
     component: AdminComponent,
     children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
       // {
       //   path: 'dashboard',
       //   loadChildren: () => import('./pages/dashboard/dashboard-default/dashboard-default.module').then(m => m.DashboardDefaultModule)

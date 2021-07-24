@@ -14,6 +14,10 @@ export class ManageBuildingsComponent implements OnInit {
 
   buildingName : string;
 
+  updateBuildingId : string;
+  updateBuildingName : string;
+  updateBuildingStatus : string;
+
   constructor(
     private buildingService : BuildingServiceService,
     private notificationService : NotificationService
@@ -64,7 +68,12 @@ export class ManageBuildingsComponent implements OnInit {
 
   _createBuilding(){
    if (this.buildingName !== ''){
-     this.buildingService.createBuilding(this.buildingName).subscribe((data)=>{
+     let data = {
+       buildingId : 0,
+       name : this.buildingName,
+       status : "ACTIVE"
+     }
+     this.buildingService.createBuilding(data).subscribe((data)=>{
        this.notificationService.showSuccess("Building added success!","");
      },error => {
        this.notificationService.showError("Building added failed!","");
@@ -72,6 +81,12 @@ export class ManageBuildingsComponent implements OnInit {
    }else{
      this.notificationService.showError("Building name is required!","");
    }
+  }
+
+  _loadBuildingDetails(id,name,status){
+   this.updateBuildingId = id;
+   this.updateBuildingName = name;
+   this.updateBuildingStatus = status;
   }
 
 }
