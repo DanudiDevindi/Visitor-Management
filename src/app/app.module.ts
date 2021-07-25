@@ -26,6 +26,7 @@ import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildi
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr'
+import {AuthGuard} from './auth/auth-guard';
 
 
 
@@ -59,7 +60,7 @@ import {ToastrModule} from 'ngx-toastr'
       ToastrModule.forRoot()
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

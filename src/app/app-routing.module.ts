@@ -11,13 +11,15 @@ import {AuthComponent} from './layout/auth/auth.component';
 import { CheckInVisitorsComponent } from './pages/check-in-visitors/check-in-visitors.component';
 import { CheckedInVisitorsComponent } from './pages/checked-in-visitors/checked-in-visitors.component';
 import { ManageBuildingsComponent } from './pages/manage-buildings/manage-buildings.component';
+import {AuthGuard} from './auth/auth-guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'user-login', pathMatch: 'full'},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'user-login',component:UserLoginComponent},
   {
     path: '',
     component: AdminComponent,
+    canActivate : [AuthGuard],
     children: [
       // {
       //   path: 'dashboard',
@@ -28,34 +30,42 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component:DashboardComponent,
+        canActivate : [AuthGuard]
         },
       {
         path: 'check-in-visitors',
         component :CheckInVisitorsComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'checked-in-visitors',
         component :CheckedInVisitorsComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'overdue-checked-in',
         component :OverdueCheckedInComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'checked-out-visitors',
         component :CheckedOutVisitorsComponent,
+        canActivate : [AuthGuard]
       },
       {
         path: 'manage-staff',
         component :ManageStaffComponent,
+        canActivate : [AuthGuard]
       },
       {
       path: 'manage-system-users',
       component: ManageSystemUsersComponent,
+        canActivate : [AuthGuard]
       },
       {
       path: 'manage-buldings',
       component: ManageBuildingsComponent,
+        canActivate : [AuthGuard]
       },
       // {
       // path: 'user-login',

@@ -45,6 +45,17 @@ export class BuildingServiceService {
         'Content-Type': 'application/json'
       });
 
-    return this.httpClient.post(url,building,{headers});
+    return this.httpClient.put(url,building,{headers});
+  }
+
+  public deleteBuilding(buildingId){
+    let url = `${this.BASE_URL+'v1/building/delete?id='+buildingId}`;
+    let token = localStorage.getItem('access_token');
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token
+      });
+
+    return this.httpClient.delete(url,{headers});
   }
 }
