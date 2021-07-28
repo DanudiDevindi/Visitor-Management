@@ -64,6 +64,7 @@
                                     <div>
                                         <input type="text" [(ngModel)]="empUpdateFirstName" class="form-control input-lg" id="FirstName" placeholder="First Name" name="FirstName" value="">
                                     </div>
+                                  <span style="color: red">{{updateFirstnameError}}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -72,6 +73,7 @@
                                     <div>
                                         <input type="tel" [(ngModel)]="empUpdateMobile" class="form-control input-lg" name="Tel" id="tel" placeholder="Tel" value="">
                                     </div>
+                                  <span style="color: red">{{updateMobileError}}</span>
                                 </div>
                             </div>
                             </div>
@@ -82,6 +84,7 @@
                                     <div>
                                         <input type="text" [(ngModel)]="empUpdateLastName" class="form-control input-lg" name="LastName" id="lastName" placeholder="Last Name" value="">
                                     </div>
+                                  <span style="color: red">{{updateLastnameError}}</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -90,6 +93,7 @@
                                     <div>
                                         <input type="email" [(ngModel)]="empUpdateEmail" class="form-control input-lg" name="email"id="email" placeholder="Email" value="">
                                     </div>
+                                  <span style="color: red">{{updateEmailError}}</span>
                                 </div>
                             </div>
                             </div>
@@ -101,6 +105,7 @@
                                             <div>
                                                 <input type="text" [(ngModel)]="empUpdateDesignation" class="form-control input-lg" name="designation" placeholder="Designation" id="designation" value="">
                                             </div>
+                                          <span style="color: red">{{updateDesignationError}}</span>
                                         </div>
                                     </div>
 <!--                                    <div class="col-md-6">-->
@@ -123,6 +128,7 @@
                                             <div>
                                                 <input type="text" [(ngModel)]="empUpdateNic" class="form-control input-lg" id="nicpassport" placeholder="NIC / Passport" name="nicpassport" value="">
                                             </div>
+                                          <span style="color: red">{{updateNicError}}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
