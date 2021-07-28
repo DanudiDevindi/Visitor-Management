@@ -92,4 +92,5 @@ export class ReceptionistService {
     const url = `${this.BASE_URL + 'v1/pass/active'}`
     return this.httpClient.get(url, {headers})
   }
+
 }
