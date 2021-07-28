@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VisitorsService} from '../../service/visitors.service';
+import {NotificationService} from '../../shared/util/notification.service';
+import {Visitors} from '../../model/visitors';
 
 @Component({
   selector: 'app-checked-out-visitors',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckedOutVisitorsComponent implements OnInit {
 
-  constructor() { }
+  visitorsList : Visitors[];
+
+  constructor(
+    private visitorService : VisitorsService,
+    private notificationService : NotificationService
+  ) { }
 
   visited = [
     {
@@ -142,7 +150,7 @@ export class CheckedOutVisitorsComponent implements OnInit {
   staffmembername:'dfhuhff',
   designation:'dededd',
 },
-    
+
 
   ]
   pageOfItems: Array<any>;
@@ -152,6 +160,18 @@ export class CheckedOutVisitorsComponent implements OnInit {
 }
 
   ngOnInit() {
+  }
+
+  _getVisitorsList(){
+   this.visitorService.getAllVisitors('',0).subscribe((data: Object[])=>{
+     if (data['success']){
+       this.visitorsList = data['body'].content;
+     }else {
+       this.notificationService.showError("Record not found","");
+     }
+   },error => {
+     this.notificationService.showError("Record not found","");
+   });
   }
 
 }
