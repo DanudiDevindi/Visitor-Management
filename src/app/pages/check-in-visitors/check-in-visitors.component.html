@@ -1,228 +1,299 @@
 <div class="header-title">Check in visitors</div>
 <div class="container">
-<div class="row">
+  <div class="row">
     <div class="col-lg-6 col-md-12 col-sm-12 check-in-visitor">
-        <form class="check-in-visitor-form">
-            <div class="form-headers">Staff Details</div>
-            <!-- <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-                    <label for="Staff member">Staff member</label>
-                    <input type="text" class="form-control" id="staffMember" placeholder="Search by Name,mobile"required>
-                    <div class="invalid-feedback">
-                        Valid staff member detail is required.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" class="btn btn-primary mb-3 search-btn">Search</button>
-                </div>
-            </div> -->
-            <div class="mb-3">
-            <div class="form-group">
-                <div class="ng-autocomplete tf-background-autocompleate">
-                    <label>Staff Member</label>
-                    <ng-autocomplete
-                            [data]="data"
-                            [searchKeyword]="keyword"
-                            (selected)='selectEvent($event)'
-                            (inputChanged)='onChangeSearch($event)'
-                            (inputFocused)='onFocused($event)'
-                            [itemTemplate]="itemTemplate"
-                            [notFoundTemplate]="notFoundTemplate"
-                    [(ngModel)]="staffModel.employeeCode">
-                    </ng-autocomplete>
+      <form class="check-in-visitor-form">
+        <div class="form-headers">Staff Details</div>
 
-                    <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.name"></a>
-                    </ng-template>
+        <div class="mb-3">
+          <div class="form-group">
+            <label>Staff Member</label>
+            <input
+              auto-complete
+              [(ngModel)]="staffModel.empSearch"
+              [source]="empList"
+              class="form-control"
+              (valueChanged)="onSelect($event)"
+              [ngModelOptions]="{standalone: true}"
+            />
+          </div>
+        </div>
 
-                    <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                    </ng-template>
-                </div>
+        <div class="mb-3">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                 [(ngModel)]="staffModel.employeeName"
+                 [ngModelOptions]="{standalone: true}">
+          <div class="invalid-feedback">
+            Valid name is required
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="telephoneNo">Telephone</label>
+            <input type="tel" class="form-control" id="telephoneNo" placeholder="Telephone No" name="mobile"
+                   [(ngModel)]="staffModel.mobile"
+                   required [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Valid telephone no is required.
             </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="designation">Designation</label>
+            <input type="text" class="form-control" id="designation" placeholder="Designation"
+                   [(ngModel)]="staffModel.designation"
+                   required name="designation" [ngModelOptions]="{standalone: true}">
+            <div class="invalid-feedback">
+              Valid designation is required.
             </div>
+          </div>
+        </div>
 
-            <div class="mb-3">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name"  name="name" [(ngModel)]="staffModel.employeeName">
-                <div class="invalid-feedback">
-                    Valid name is required
-                </div>
+        <div class="mb-3">
+          <label for="email-staff">Email</label>
+          <input type="email" class="form-control" id="email-staff" placeholder="Email" [(ngModel)]="staffModel.email"
+                 required name="email" [ngModelOptions]="{standalone: true}">
+          <div class="invalid-feedback">
+            valid email is required
+          </div>
+        </div>
+
+        <div class="form-headers">Visit location</div>
+
+        <div class="mb-3">
+          <label for="building">Building</label>
+          <select class="custom-select d-block w-100" id="building"
+                  [(ngModel)]="staffModel.building"
+                  (change)="loadFloorList()"
+                  [ngModelOptions]="{ standalone: true }" required>
+            <option value="">Choose...</option>
+            <option
+              *ngFor="let data of buildingList"
+              [value]="data?.buildingId"
+            >
+              {{ data?.name }}
+            </option>
+          </select>
+          <div
+            class="notification-validation-error-label"
+          >
+            <div *ngIf="staffModel.building ==''">
+              Please select a valid building.
             </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                    <label for="telephoneNo">Telephone</label>
-                    <input type="tel" class="form-control" id="telephoneNo" placeholder="Telephone No" [(ngModel)]="staffModel.telephoneNo"
-                           required>
-                    <div class="invalid-feedback">
-                        Valid telephone no is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="designation">Designation</label>
-                    <input type="text" class="form-control" id="designation" placeholder="Designation" [(ngModel)]="staffModel.designation" required>
-                    <div class="invalid-feedback">
-                        Valid designation is required.
-                    </div>
-                </div>
-             </div>
-
-         <div class="mb-3">
-                <label for="email-staff">Email</label>
-                <input type="email" class="form-control" id="email-staff" placeholder="Email" [(ngModel)]="staffModel.email" required>
-                <div class="invalid-feedback">
-                    valid email is required
-                </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="floor">Floor</label>
+          <select class="custom-select d-block w-100" id="floor"
+                  [(ngModel)]="staffModel.floorId" name="floor" required>
+            <option value="">Choose...</option>
+            <option
+              *ngFor="let data of floorList"
+              [value]="data?.floorId"
+            >
+              {{ data?.name }}
+            </option>
+          </select>
+          <div
+            class="notification-validation-error-label"
+          >
+            <div *ngIf="staffModel.floorId ==''">
+              Please select a valid floor.
             </div>
+          </div>
 
-            <div class="form-headers">Visit location</div>
-
-            <div class="mb-3">
-                    <label for="building">Building</label>
-                    <select class="custom-select d-block w-100" id="building" [(ngModel)]="staffModel.building"
-                            [ngModelOptions]="{ standalone: true }" required>
-                        <option value="">Choose...</option>
-                        <option>Abcd</option>
-                        <option>dfccc</option>
-                        <option>hnb</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid building.
-                    </div>
-            </div>
-            <div class="mb-3">
-                <label for="floor">Floor</label>
-                <select class="custom-select d-block w-100" id="floor" [(ngModel)]="staffModel.floor" required>
-                    <option value="">Choose...</option>
-                    <option>bcd</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid floor.
-                </div>
         </div>
         <div class="form-headers">Visit Purpose</div>
         <div class="mb-3">
-            <label for="visitPurpose">Purpose</label>
-            <select class="custom-select d-block w-100" id="visitPurpose" [(ngModel)]="visitorModel.purpose" required>
-                <option value="">Choose...</option>
-                <option></option>
-            </select>
-            <div class="invalid-feedback">
-                Please select a valid visit Purpose.
+          <label for="visitPurpose">Purpose</label>
+          <select class="custom-select d-block w-100" id="visitPurpose" (change)="getPurpose()" [(ngModel)]="purpose"
+                  name="purpose" required>
+            <option value="">Choose...</option>
+            <option value="Interview">Interview</option>
+            <option value="Cash Collection">Cash Collection</option>
+            <option value="Meeting">Meeting</option>
+            <option value="Other">Other</option>
+          </select>
+          <div
+            class="notification-validation-error-label"
+          >
+            <div *ngIf="purpose ==''">
+              Please select a valid purpose.
             </div>
-    </div>
-            </form>
+          </div>
+        </div>
+        <div class="mb-3" *ngIf="otherPurpose==true">
+          <textarea rows="4" cols="50" class="form-control" placeholder="enter text" id="message" maxlength="500"
+                    [(ngModel)]="reason" [ngModelOptions]="{standalone: true}" required></textarea>
+        </div>
+      </form>
 
     </div>
-
+    <!--    novalidate [formGroup]="visitorForm"-->
     <div class="col-lg-6 col-sm-12 col-md-12  check-in-visitor">
-     <form class="check-in-visitor-form">
-            <div class="form-headers">Visitor Details</div>
-            <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-                    <label for="visitor">Visitor</label>
-                    <input type="text" class="form-control" id="visitor" placeholder="Search by Name,mobile" required>
-                    <div class="invalid-feedback">
-                        Valid visitor detail is required.
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-                 <button type="submit" id="search-btn" class="btn btn-primary mb-3 search-btn">Search</button>
-                </div>
+      <form [formGroup]="visitorForm" novalidate class="check-in-visitor-form">
+        <div class="form-headers">Visitor Details</div>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
+            <label for="visitor">Visitor</label>
+            <input type="text" class="form-control" formControlName="nicVisitor" id="visitor" [(ngModel)]="visitorNic"
+                   placeholder="Search by Name,mobile" required>
+            <div
+              *ngIf="f.nicVisitor.touched && f.nicVisitor.errors"
+              class="notification-validation-error-label"
+            >
+              <div *ngIf="f.nicVisitor.errors.required">
+                Visitor Nic is required
+              </div>
             </div>
 
-           <div class="row">
-              <div class="col-md-6 mb-3">
-                    <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="first-name" placeholder="First Name" [(ngModel)]="visitorModel.firstName" required>
-                    <div class="invalid-feedback">
-                        Valid firstName is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="last-name" placeholder="Last Name" [(ngModel)]="visitorModel.lastName" required>
-                    <div class="invalid-feedback">
-                        Valid lastName is required.
-                    </div>
-                </div>
-             </div>
-             <div class="row">
-                <div class="col-md-6 mb-3">
-                      <label for="nicPassport">NIC/Passport</label>
-                      <input type="text" class="form-control" id="nicPassport" name="nic" placeholder="NIC / Passport" [(ngModel)]="visitorModel.nicPassport" required>
-                      <div class="invalid-feedback">
-                          Valid nic Passport is required.
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                      <label for="mobile">Mobile</label>
-                      <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Mobile" [(ngModel)]="visitorModel.mobile" required>
-                      <div class="invalid-feedback">
-                          Valid mobile is required.
-                      </div>
-                  </div>
-               </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
+            <button type="button" id="search-btn" class="btn btn-primary mb-3 search-btn"
+                    (click)="searchVisitor()"
+                    *ngIf="visitorNic != null && visitorNic.trim() != ''
+                  ">
+              Search
+            </button>
+            <button type="button" id="search-btn-disable" class="btn btn-secondary mb-3 search-btn"
+                    *ngIf="
+                    visitorNic == null ||
+                    (visitorNic != null &&
+                      visitorNic.trim() == '')
+                  "
+                    disabled>
+              Search
+            </button>
+          </div>
+        </div>
 
-         <div class="mb-3">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email-visitor" name="email" placeholder="Email" [(ngModel)]="visitorModel.email" required>
-                <div class="invalid-feedback">
-                    valid email is required
-                </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="first-name"
+                   placeholder="First Name"
+                   [(ngModel)]="visitorModel.firstName" required formControlName="firstNameVisitor">
+
+            <div
+              *ngIf="f.firstNameVisitor.touched && f.firstNameVisitor.errors"
+              class="notification-validation-error-label"
+            >
+              <div *ngIf="f.firstNameVisitor.errors.required">
+                First Name is required
+              </div>
             </div>
-
-         <div class="mb-3">
-                    <label for="card">Card</label>
-                    <select class="custom-select d-block w-100" id="card" required>
-                        <option value="">Choose...</option>
-                        <option></option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please card a valid building.
-                    </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="last-name" placeholder="Last Name"
+                   [(ngModel)]="visitorModel.lastName" required formControlName="lastNameVisitor">
+            <div
+              *ngIf="f.lastNameVisitor.touched && f.lastNameVisitor.errors"
+              class="notification-validation-error-label"
+            >
+              <div *ngIf="f.lastNameVisitor.errors.required">
+                Last Name is required
+              </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 mb-3"></div>
-            <div class="col-md-4 mb-3" style="text-align: end;">
-                <button type="button" id="add-to-list-btn" class="btn btn-primary mb-3 search-btn" (click)="addToCheckinList()">Add to list</button>
-                </div>
-                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="nicPassport">NIC/Passport</label>
+            <input type="text" class="form-control" id="nicPassport" readonly name="nic" placeholder="NIC / Passport"
+                   [(ngModel)]="visitorModel.nicPassport" required [ngModelOptions]="{ standalone: true }">
+            <div class="invalid-feedback">
+              Valid nic Passport is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mobile">Mobile</label>
+            <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Mobile"
+                   [(ngModel)]="visitorModel.mobile" required formControlName="mobileVisitor">
+            <div
+              *ngIf="f.mobileVisitor.touched && f.mobileVisitor.errors"
+              class="notification-validation-error-label"
+            >
+              <div *ngIf="f.mobileVisitor.errors.required">
+                Mobile Number is required
+              </div>
+            </div>
+          </div>
+        </div>
 
-                <div class="table-responsive">
-                     <table class="table" id="visitor-details-table">
-                    <thead>
-                      <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">NIC/Passport</th>
-                        <th scope="col">Mobile</th>
-                        <th scope="col">Remove</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngFor="let visitors of pageOfItems">
-                      <tr>
-                        <td>{{visitors.firstName}}</td>
-                        <td>{{visitors.nicPassport}}</td>
-                        <td>{{visitors.mobile}}</td>
-                        <td>
-                            <a href="" class="bin">
-                                <img src="https://img.icons8.com/material-rounded/24/fa314a/filled-trash.png"/>
-                                </a>
-                            </td>
-                      </tr>
-                     </tbody>
-                     </table>
-                     <jw-pagination [items]="checkinList" (changePage)="onChangePage($event)"></jw-pagination>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8 mb-3"></div>
-                <div class="col-md-4 mb-3" style="text-align: end;">
-                    <button type="button"id="visitor-submit-button" (click)="checkin()" class="btn btn-primary mb-3 search-btn">Submit</button>
-                    </div>
-                    </div>
-        </form>
+        <div class="mb-3">
+          <label for="email-visitor">Email</label>
+          <input type="email" class="form-control" id="email-visitor" name="emailAddress" placeholder="Email"
+                 [(ngModel)]="visitorModel.email" required [ngModelOptions]="{ standalone: true }">
+          <div class="invalid-feedback">
+            valid email is required
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="card">Card</label>
+          <select class="custom-select d-block w-100" id="card" [(ngModel)]="visitorModel.passCard" required
+                  [ngModelOptions]="{ standalone: true }">
+            <option value="">Choose...</option>
+            <option
+              *ngFor="let data of activePassList"
+              [value]="data?.id"
+            >
+              {{ data?.name }}
+            </option>
+          </select>
+          <div
+            class="notification-validation-error-label"
+          >
+            <div *ngIf="visitorModel.passCard ==''">
+              PassCard is required
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 mb-3"></div>
+          <div class="col-md-4 mb-3" style="text-align: end;">
+            <button type="button" id="add-to-list-btn" class="btn btn-primary mb-3 search-btn"
+                     (click)="addToCheckinList()">Add to list
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table" id="visitor-details-table">
+            <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">NIC/Passport</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Remove</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let visitors of checkinList; let row = index">
+            <tr>
+              <td>{{visitors.visitorFirstName }} {{visitors.visitorLastName}}</td>
+              <td>{{visitors.nic}}</td>
+              <td>{{visitors.mobile}}</td>
+              <td>
+                <button (click)="deleteSelectedRecord(row)" href="" class="bin">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-md-8 mb-3"></div>
+          <div class="col-md-4 mb-3" style="text-align: end;">
+            <button type="button" id="visitor-submit-button" (click)="checkin()"
+                    class="btn btn-primary mb-3 search-btn">Submit
+            </button>
+          </div>
+        </div>
+      </form>
 
     </div>
-</div>
+  </div>
 </div>

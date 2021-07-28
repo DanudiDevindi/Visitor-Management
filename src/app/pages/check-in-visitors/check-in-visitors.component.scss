@@ -8,7 +8,7 @@
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 3%;
-    
+
 }
 .form-headers {
     font-weight: 700;
@@ -22,13 +22,15 @@
 .ng-autocomplete{
     width: 99% !important;
 }
+
+
 @media screen and (max-width: 1200px) {
     .search-btn{
         margin-top: 21%;
-        
+
     }
-    
- 
+
+
   @media screen and (max-width: 780px) {
     .search-btn{
         margin-top: 11%;
