@@ -34,4 +34,28 @@ export class BuildingServiceService {
 
     return this.httpClient.post(url,building,{headers});
   }
+
+  public updateBuilding(building){
+    let url = `${this.BASE_URL+'v1/building/update'}`;
+    let token = localStorage.getItem('access_token');
+
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token,
+        'Content-Type': 'application/json'
+      });
+
+    return this.httpClient.put(url,building,{headers});
+  }
+
+  public deleteBuilding(buildingId){
+    let url = `${this.BASE_URL+'v1/building/delete?id='+buildingId}`;
+    let token = localStorage.getItem('access_token');
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token
+      });
+
+    return this.httpClient.delete(url,{headers});
+  }
 }

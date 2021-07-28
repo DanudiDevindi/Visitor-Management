@@ -53,4 +53,8 @@ export class AuthenticationService {
   public checkCredentials() {
     return localStorage.getItem('access_token');
   }
+
+  public loggedIn(){
+    return !!localStorage.getItem('access_token');
+  }
 }

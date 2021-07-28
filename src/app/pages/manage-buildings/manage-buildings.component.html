@@ -37,8 +37,11 @@
          <tr>
           <td>{{build.name}}</td>
            <td>{{build.status}}</td>
-           <td><button type="submit" id="btn-floor" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
-           <td><button type="submit" id="btn-building-edit" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button><button type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td>
+           <td><button type="button" (click)="_getBuildingId(build.buildingId)" id="btn-floor" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
+           <td>
+             <button type="button" id="btn-building-edit" (click)="_loadBuildingDetails(build.buildingId,build.name,build.status)" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button>
+             <button type="button" class="btn btn-danger mb-3 edit-btn">Delete</button>
+           </td>
 <!--
            modal for edit building -->
            <div id="editbulding" class="modal fade">
@@ -58,15 +61,15 @@
                                 <div class="form-group">
                                     <label class="control-label">Building Name</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" name="BuildingNameupdate" id="buildingNameupdate" placeholder="Building Name" value="">
+                                        <input type="text" class="form-control input-lg" [(ngModel)]="updateBuildingName" name="BuildingNameupdate" id="buildingNameupdate" placeholder="Building Name" value="">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <div class="custom-control custom-switch" style="margin-top: 8%; text-align: center;">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                    <label class="custom-control-label" for="customSwitch1">Active</label>
+                                    <input type="checkbox" class="custom-control-input" [(ngModel)]="active" name="active" id="building-status" (change)="checkValue(active)">
+                                    <label class="custom-control-label" for="building-status">Active</label>
                                   </div>
                                   </div>
                             </div>
@@ -82,7 +85,7 @@
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-group add-btn-div">
                                                     <div>
-                                                        <button type="submit"  id="building-updatebtn"class="btn btn-primary add-btn-modal  update-btn-align">
+                                                        <button type="button" (click)="_updateBuilding()" id="building-updatebtn"class="btn btn-primary add-btn-modal  update-btn-align">
                                                             Update
                                                         </button>
                                                     </div>
@@ -116,7 +119,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Floor Name</label>
                                     <div>
-                                        <input type="text" class="form-control input-lg" name="floorname" id="floorname" placeholder="Floor Name" value="">
+                                        <input type="text" class="form-control input-lg" [(ngModel)]="floorName" name="floorname" id="floorname" placeholder="Floor Name" value="">
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +143,7 @@
                                             <div class="col-md-6" style="text-align: center;">
                                                 <div class="form-group add-btn-div">
                                                     <div>
-                                                        <button type="submit" id="add-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
+                                                        <button type="button" (click)="_floorCreate()" id="add-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
                                                             Add
                                                         </button>
                                                         <button type="submit" id="update-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="show" >
