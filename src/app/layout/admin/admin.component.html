@@ -271,7 +271,7 @@
     </nav>
 
     <!-- rightbar chat start -->
-    <div [@slideInOut]="verticalPlacement === 'right' ? chatToggleInverse : chatToggle" id="sidebar" class="users p-chat-user">
+    <!-- <div [@slideInOut]="verticalPlacement === 'right' ? chatToggleInverse : chatToggle" id="sidebar" class="users p-chat-user">
       <div class="had-container">
         <div class="card card_main p-fixed users-main">
           <div class="user-box">
@@ -386,7 +386,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
     <!-- right-bar inner chat end -->
 
     <div class="pcoded-main-container" [style.margin-top]="headerFixedMargin">
@@ -419,7 +419,7 @@
                 <span class="search-icon"><i class="ti-search" aria-hidden="true"></i></span>
               </div>
             </div> -->
-            <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config">
+            <perfect-scrollbar [style.max-width]="'100%'" [config]="config">
               <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
                 <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme">{{asideItems.label}}</div>
                 <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder" [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder" *ngFor="let asideItem of asideItems.main" appAccordionLink group="{{asideItem.state}}">

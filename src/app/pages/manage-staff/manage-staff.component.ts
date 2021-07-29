@@ -35,6 +35,13 @@ export class ManageStaffComponent implements OnInit {
   updateEmailError : string = '';
   updateDesignationError : string = '';
 
+  addFirstnameError : string = '';
+  addLastnameError : string = '';
+  addNicError : string = '';
+  addMobileError : string = '';
+  addEmailError : string = '';
+  addDesignationError : string = '';
+
   constructor(private systemEmployeeService: SystemEmployeeService, private notification: NotificationService) {
   }
 
@@ -73,15 +80,17 @@ export class ManageStaffComponent implements OnInit {
   }
 
   _createNewEmployee(){
-   this.systemEmployeeService.createEmployee(this.empFirstName,this.empLastName,this.empNic,this.empEmail,this.empMobile,this.empDesignation).subscribe((data)=>{
-     if (data['success']){
-       this.notification.showSuccess("Employee Added Success","");
-     }else{
-       this.notification.showError("Employee Added Failed","")
-     }
-   },error => {
-     this.notification.showError("Employee Added Failed","")
-   })
+    if (this._checkAddFormFieldsEmpty()){
+      this.systemEmployeeService.createEmployee(this.empFirstName,this.empLastName,this.empNic,this.empEmail,this.empMobile,this.empDesignation).subscribe((data)=>{
+        if (data['success']){
+          this.notification.showSuccess("Employee Added Success","");
+        }else{
+          this.notification.showError("Employee Added Failed","")
+        }
+      },error => {
+        this.notification.showError("Employee Added Failed","")
+      })
+    }
   }
 
   employeeCustomSearch(){
@@ -160,6 +169,46 @@ export class ManageStaffComponent implements OnInit {
       }
     }else {
       this.updateFirstnameError = "First name is required";
+      return false;
+    }
+  }
+
+  _checkAddFormFieldsEmpty(){
+    this.addFirstnameError = "";
+    this.addMobileError = "";
+    this.addLastnameError = "";
+    this.addNicError = "";
+    this.addDesignationError = "";
+    this.addEmailError = "";
+    if (this.empFirstName !== ''){
+      if (this.empMobile !== ''){
+        if (this.empLastName !== ''){
+          if (this.empEmail !== ""){
+            if (this.empDesignation !== ""){
+              if (this.empNic !== ""){
+                return true;
+              }else{
+                this.addNicError = "NIC is required";
+                return false;
+              }
+            }else{
+              this.addDesignationError = "Designation is required";
+              return false;
+            }
+          }else{
+            this.addEmailError = "Email is required";
+            return false;
+          }
+        }else{
+          this.addLastnameError = "Last name is required";
+          return false;
+        }
+      }else{
+        this.addMobileError = "Mobile number is required";
+        return false;
+      }
+    }else {
+      this.addFirstnameError = "First name is required";
       return false;
     }
   }
