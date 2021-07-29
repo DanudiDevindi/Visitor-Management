@@ -10,6 +10,7 @@ import {ModalComponent} from "../../modalview/modal.component";
   templateUrl: './manage-buildings.component.html',
   styleUrls: ['./manage-buildings.component.scss']
 })
+
 export class ManageBuildingsComponent implements OnInit {
 
   buildingList: Building[];
