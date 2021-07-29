@@ -40,7 +40,7 @@
            <td><button type="button" (click)="_getBuildingId(build.buildingId)" id="btn-floor" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
            <td>
              <button type="button" id="btn-building-edit" (click)="_loadBuildingDetails(build.buildingId,build.name,build.status)" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button>
-             <button type="button" class="btn btn-danger mb-3 edit-btn">Delete</button>
+             <button type="button" (click)="_deleteBuilding(build.buildingId)" class="btn btn-danger mb-3 edit-btn">Delete</button>
            </td>
 <!--
            modal for edit building -->
@@ -126,7 +126,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <div class="custom-control custom-switch" style="margin-top: 8%; text-align: center;">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                                    <input type="checkbox" [(ngModel)]="floorActive" name="floorActive"  class="custom-control-input" id="customSwitch1" (change)="checkFloorValue(floorActive?true:false)">
                                     <label class="custom-control-label" for="customSwitch1" *ngIf="show">Active</label>
                                   </div>
                                   </div>
@@ -169,11 +169,11 @@
 
                                             </tr>
                                        </thead>
-                                       <tbody *ngFor="let visiteda of pageOfItems">
+                                       <tbody *ngFor="let floor of floorList">
                                          <tr>
-                                          <td>{{visiteda.title}}</td>
-                                           <td>{{visiteda.address}}</td>
-                                        <td><button type="submit"  id="floor-edit-btn" class="btn btn-primary mb-3 edit-btn" id="editbtn" (click)="toggle()">Edit</button><button id="floor-delete-btn" type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td></tr>
+                                          <td>{{floor.name}}</td>
+                                           <td>{{floor.status}}</td>
+                                        <td><button type="submit"  id="floor-edit-btn" class="btn btn-primary mb-3 edit-btn" id="editbtn" (click)="_loadFloorDetails(floor.floorId,floor.name,floor.status)">Edit</button><button id="floor-delete-btn" type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td></tr>
                                         </tbody>
                                         </table>
                                         <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>

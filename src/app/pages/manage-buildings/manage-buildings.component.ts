@@ -3,6 +3,7 @@ import {Building} from '../../model/building';
 import {BuildingServiceService} from '../../service/building-service.service';
 import {NotificationService} from '../../shared/util/notification.service';
 import {FloorService} from '../../service/floor.service';
+import {BuildingFloors} from '../../model/building-floors';
 
 @Component({
   selector: 'app-manage-buildings',
@@ -12,6 +13,7 @@ import {FloorService} from '../../service/floor.service';
 export class ManageBuildingsComponent implements OnInit {
 
   buildingList : Building[];
+  floorList : BuildingFloors[];
 
   buildingName : string;
 
@@ -22,8 +24,10 @@ export class ManageBuildingsComponent implements OnInit {
   floorBuildingId : number;
 
   active : boolean;
+  floorActive : boolean;
 
   floorName : string;
+  updateFloorId : number;
 
   constructor(
     private buildingService : BuildingServiceService,
@@ -83,6 +87,7 @@ export class ManageBuildingsComponent implements OnInit {
 
      this.buildingService.createBuilding(data).subscribe((data)=>{
        this.notificationService.showSuccess("Building added success!","");
+       this._getBuildingList();
      },error => {
        this.notificationService.showError("Building added failed!","");
      })
@@ -102,7 +107,8 @@ export class ManageBuildingsComponent implements OnInit {
 
       this.floorService.createFloor(floor).subscribe((data)=>{
         if (data['success']){
-          this.notificationService.showSuccess("Floor Added Success!","")
+          this.notificationService.showSuccess("Floor Added Success!","");
+          this._getFloorsByBuildingId();
         }else {
           this.notificationService.showError("Floor Added failed","");
         }
@@ -126,6 +132,10 @@ export class ManageBuildingsComponent implements OnInit {
   }
 
   checkValue(event: any){
+  }
+
+  checkFloorValue(event : any){
+
   }
 
   _updateBuilding(){
@@ -156,10 +166,43 @@ export class ManageBuildingsComponent implements OnInit {
 
   _getBuildingId(buildId){
    this.floorBuildingId = buildId;
+   this._getFloorsByBuildingId();
   }
 
-  _deleteBuilding(){
+  _deleteBuilding(buildingId){
+   this.buildingService.deleteBuilding(buildingId).subscribe((data)=>{
+     if (data['success']){
+       this.notificationService.showSuccess("Building deleted successfully","");
+       this._getBuildingList();
+     }else{
+       this.notificationService.showError("Building delete failed","");
+     }
+   },error => {
+     this.notificationService.showError("Building delete failed","");
+   })
+  }
 
+  _getFloorsByBuildingId(){
+   this.floorService.getFloorsByBuildingId(this.floorBuildingId).subscribe((data: Object[]) => {
+     if (data['success']){
+       this.floorList = data['body'];
+     }else{
+       this.notificationService.showError("Record not found","");
+     }
+   },error => {
+     this.notificationService.showError("Record not found","");
+   });
+  }
+
+  _loadFloorDetails(floorId,floorName,floorStatus){
+   this.toggle();
+   this.updateFloorId = floorId;
+   this.floorName = floorName;
+   if (floorStatus === "ACTIVE"){
+     this.floorActive = true;
+   }else {
+     this.floorActive = false;
+   }
   }
 
 }

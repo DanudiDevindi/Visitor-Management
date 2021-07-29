@@ -27,4 +27,16 @@ export class FloorService {
     return this.httpClient.post(url,floor,{headers});
   }
 
+  public getFloorsByBuildingId(buildingId){
+    let url = `${this.BASE_URL+'v1/floor/active/building/'+buildingId}`;
+    let token = localStorage.getItem('access_token');
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token,
+        'Content-Type': 'application/json'
+      });
+
+    return this.httpClient.get(url,{headers});
+  }
+
 }
