@@ -30,6 +30,7 @@ import {AuthGuard} from './auth/auth-guard';
 
 
 import {Ng2AutoCompleteModule} from 'ng2-auto-complete'
+import {ModalComponent} from "./modalview/modal.component";
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {Ng2AutoCompleteModule} from 'ng2-auto-complete'
     ManageSystemUsersComponent,
     DashboardComponent,
     UserLoginComponent,
-    ManageBuildingsComponent
+    ManageBuildingsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
