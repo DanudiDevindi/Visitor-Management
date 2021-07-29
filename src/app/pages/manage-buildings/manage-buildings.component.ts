@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Building} from '../../model/building';
 import {BuildingServiceService} from '../../service/building-service.service';
 import {NotificationService} from '../../shared/util/notification.service';
 import {FloorService} from '../../service/floor.service';
+import {ModalComponent} from "../../modalview/modal.component";
 
 @Component({
   selector: 'app-manage-buildings',
@@ -11,39 +12,43 @@ import {FloorService} from '../../service/floor.service';
 })
 export class ManageBuildingsComponent implements OnInit {
 
-  buildingList : Building[];
+  buildingList: Building[];
+  @ViewChild(`addempl`,{static: false})
+  public addempl: ModalComponent
+  buildingName: string;
 
-  buildingName : string;
+  updateBuildingId: string;
+  updateBuildingName: string;
+  updateBuildingStatus: string;
 
-  updateBuildingId : string;
-  updateBuildingName : string;
-  updateBuildingStatus : string;
+  floorBuildingId: number;
 
-  floorBuildingId : number;
+  active: boolean;
 
-  active : boolean;
-
-  floorName : string;
+  floorName: string;
 
   constructor(
-    private buildingService : BuildingServiceService,
-    private floorService : FloorService,
-    private notificationService : NotificationService
-  ) { }
+    private buildingService: BuildingServiceService,
+    private floorService: FloorService,
+    private notificationService: NotificationService
+  ) {
+  }
+
   visited = [
     {
-        title: 'ebfhbfhf',
-        address: 'dehyuehfuhfu',
-        tel: '2323232',
-        email:'eygfygyf',
+      title: 'ebfhbfhf',
+      address: 'dehyuehfuhfu',
+      tel: '2323232',
+      email: 'eygfygyf',
 
 
-      },
+    },
 
   ]
 
-  public show:boolean = false;
-  public hide:boolean=true;
+  public show: boolean = false;
+  public hide: boolean = true;
+
   toggle() {
     this.show = !this.show;
     this.hide = !this.hide;
@@ -51,114 +56,116 @@ export class ManageBuildingsComponent implements OnInit {
 
 
   pageOfItems: Array<any>;
- onChangePage(pageOfItems: Array<any>) {
-  // update current page of items
-  this.pageOfItems = pageOfItems;
-}
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
 
 
   ngOnInit() {
-   this._getBuildingList();
+    this._getBuildingList();
   }
 
-  _getBuildingList(){
-   this.buildingService.getBuildingList().subscribe((data: Object[])=>{
-     if (data['success']){
-       this.buildingList = data['body'];
-     }else {
-       this.notificationService.showError("Record not found","");
-     }
-   },error => {
-     this.notificationService.showError("Record not found","");
-   })
+  _getBuildingList() {
+    this.buildingService.getBuildingList().subscribe((data: Object[]) => {
+      if (data['success']) {
+        this.buildingList = data['body'];
+      } else {
+        this.notificationService.showError("Record not found", "");
+      }
+    }, error => {
+      this.notificationService.showError("Record not found", "");
+    })
   }
 
-  _createBuilding(){
-   if (this.buildingName !== ''){
-     let data = {
-       buildingId : 0,
-       name : this.buildingName,
-       status : "ACTIVE"
-     }
+  _createBuilding() {
+    if (this.buildingName !== '') {
+      let data = {
+        buildingId: 0,
+        name: this.buildingName,
+        status: "ACTIVE"
+      }
 
-     this.buildingService.createBuilding(data).subscribe((data)=>{
-       this.notificationService.showSuccess("Building added success!","");
-     },error => {
-       this.notificationService.showError("Building added failed!","");
-     })
-   }else{
-     this.notificationService.showError("Building name is required!","");
-   }
+      this.buildingService.createBuilding(data).subscribe((data) => {
+        this.notificationService.showSuccess("Building added success!", "");
+      }, error => {
+        this.notificationService.showError("Building added failed!", "");
+      })
+    } else {
+      this.notificationService.showError("Building name is required!", "");
+    }
+    this.addempl.hide()
   }
 
-  _floorCreate(){
-    if (this.floorName !== ''){
+  _floorCreate() {
+    if (this.floorName !== '') {
       let floor = {
-        floorId : 0,
-        name : this.floorName,
-        FloorStatus : "ACTIVE",
-        buildingId : this.floorBuildingId
+        floorId: 0,
+        name: this.floorName,
+        FloorStatus: "ACTIVE",
+        buildingId: this.floorBuildingId
       };
 
-      this.floorService.createFloor(floor).subscribe((data)=>{
-        if (data['success']){
-          this.notificationService.showSuccess("Floor Added Success!","")
-        }else {
-          this.notificationService.showError("Floor Added failed","");
+      this.floorService.createFloor(floor).subscribe((data) => {
+        if (data['success']) {
+          this.notificationService.showSuccess("Floor Added Success!", "")
+        } else {
+          this.notificationService.showError("Floor Added failed", "");
         }
-      },error => {
-        this.notificationService.showError("Floor Added failed","");
+      }, error => {
+        this.notificationService.showError("Floor Added failed", "");
       });
-    }else {
-      this.notificationService.showError("Floor name is required!","")
+    } else {
+      this.notificationService.showError("Floor name is required!", "")
     }
   }
 
-  _loadBuildingDetails(id,name,status){
-   this.updateBuildingId = id;
-   this.updateBuildingName = name;
-   this.updateBuildingStatus = status;
-   if (status === "ACTIVE"){
-     this.active = true;
-   }else if (status === "INACTIVE"){
-     this.active = false;
-   }
+  _loadBuildingDetails(id, name, status) {
+    this.updateBuildingId = id;
+    this.updateBuildingName = name;
+    this.updateBuildingStatus = status;
+    if (status === "ACTIVE") {
+      this.active = true;
+    } else if (status === "INACTIVE") {
+      this.active = false;
+    }
   }
 
-  checkValue(event: any){
+  checkValue(event: any) {
   }
 
-  _updateBuilding(){
-   if (this.buildingName !== ''){
-     let status = '';
-     if (this.active){
-       status = "ACTIVE";
-     }else {
-       status = "INACTIVE";
-     }
-     let building = {
-       buildingId : this.updateBuildingId,
-       name : this.updateBuildingName,
-       status : status
-     }
-     this.buildingService.updateBuilding(building).subscribe((data)=>{
-       if (data['success']){
-         this.notificationService.showSuccess("Building update success!","");
-         this._getBuildingList();
-       }else {
-         this.notificationService.showError("Building update failed!","");
-       }
-     },error => {
-       this.notificationService.showError("Building update failed!","");
-     });
-   }
+  _updateBuilding() {
+    if (this.buildingName !== '') {
+      let status = '';
+      if (this.active) {
+        status = "ACTIVE";
+      } else {
+        status = "INACTIVE";
+      }
+      let building = {
+        buildingId: this.updateBuildingId,
+        name: this.updateBuildingName,
+        status: status
+      }
+      this.buildingService.updateBuilding(building).subscribe((data) => {
+        if (data['success']) {
+          this.notificationService.showSuccess("Building update success!", "");
+          this._getBuildingList();
+        } else {
+          this.notificationService.showError("Building update failed!", "");
+        }
+      }, error => {
+        this.notificationService.showError("Building update failed!", "");
+      });
+    }
   }
 
-  _getBuildingId(buildId){
-   this.floorBuildingId = buildId;
+  _getBuildingId(buildId) {
+    this.floorBuildingId = buildId;
   }
 
-  _deleteBuilding(){
+  _deleteBuilding() {
 
   }
 
