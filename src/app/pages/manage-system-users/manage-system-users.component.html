@@ -37,7 +37,7 @@
            <th scope="col">Action</th>
             </tr>
        </thead>
-       <tbody *ngFor="let reception of receptionList">
+       <tbody *ngFor="let reception of pageOfItems">
          <tr>
           <td>{{reception.firstName}}</td>
            <td>{{reception.lastName}}</td>
@@ -171,7 +171,7 @@
          </tr>
         </tbody>
         </table>
-        <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
+        <jw-pagination [items]="receptionList" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
      </div>
      </div>
 

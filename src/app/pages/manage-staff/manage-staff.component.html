@@ -35,7 +35,7 @@
            <th scope="col">Action</th>
             </tr>
        </thead>
-       <tbody *ngFor="let employee of employeeList">
+       <tbody *ngFor="let employee of pageOfItems">
          <tr>
           <td>{{employee.firstName}}</td>
            <td>{{employee.lastName}}</td>
@@ -157,7 +157,7 @@
          </tr>
         </tbody>
         </table>
-        <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
+        <jw-pagination [items]="employeeList" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
      </div>
      </div>
 
