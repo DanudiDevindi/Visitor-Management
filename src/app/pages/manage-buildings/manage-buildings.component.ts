@@ -146,11 +146,13 @@ export class ManageBuildingsComponent implements OnInit {
      }else {
        status = "INACTIVE";
      }
+
      let building = {
        buildingId : this.updateBuildingId,
        name : this.updateBuildingName,
        status : status
      }
+
      this.buildingService.updateBuilding(building).subscribe((data)=>{
        if (data['success']){
          this.notificationService.showSuccess("Building update success!","");
@@ -198,6 +200,7 @@ export class ManageBuildingsComponent implements OnInit {
    this.toggle();
    this.updateFloorId = floorId;
    this.floorName = floorName;
+
    if (floorStatus === "ACTIVE"){
      this.floorActive = true;
    }else {

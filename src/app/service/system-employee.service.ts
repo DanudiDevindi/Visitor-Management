@@ -29,7 +29,7 @@ export class SystemEmployeeService {
       employeeId : 0,
       firstName : firstName,
       lastName : lastName,
-      nicPassport : nic,
+      nic : nic,
       email : email,
       mobile : mobile,
       designation : designation
