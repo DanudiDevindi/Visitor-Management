@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VisitService} from '../../service/visit.service';
+import {NotificationService} from '../../shared/util/notification.service';
+import {CheckedVisitors} from '../../model/checked-visitors';
 
 @Component({
   selector: 'app-checked-in-visitors',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckedInVisitorsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private visitService : VisitService,
+    private notificationService : NotificationService
+  ) { }
+
+  checkedVisitors : CheckedVisitors[];
+
+  customSearchText : string;
 
   visited = [
     {
@@ -60,6 +70,46 @@ export class CheckedInVisitorsComponent implements OnInit {
 }
 
   ngOnInit() {
+   this._getCheckedVisitors();
+  }
+
+  _getCheckedVisitors(){
+   this.visitService.getCheckedList('',0).subscribe((data)=>{
+     if (data['success']){
+       this.checkedVisitors = data['body'].content;
+     }else {
+       this.notificationService.showError("Record not found!","");
+     }
+   },
+     error => {
+       this.notificationService.showError("Record not found!","");
+     });
+  }
+
+  _customSearch(){
+   if (this.customSearchText !== ''){
+     this.visitService.getCheckedList(this.customSearchText,0).subscribe((data)=>{
+       if (data['success']){
+         this.checkedVisitors = data['body'].content;
+       }else {
+         this.notificationService.showError("Record not found!","");
+       }
+     },error => {
+       this.notificationService.showError("Record not found!","");
+     })
+   }
+  }
+
+  _checkOut(visitId){
+    this.visitService.checkOut(visitId).subscribe((data)=>{
+      if (data['success']){
+        this.notificationService.showSuccess("Visitor Check out success","");
+      }else {
+        this.notificationService.showError("Record not found!","");
+      }
+    },error => {
+      this.notificationService.showError("Record not found!","");
+    })
   }
 
 }

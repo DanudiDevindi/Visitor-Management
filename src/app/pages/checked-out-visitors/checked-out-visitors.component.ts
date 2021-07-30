@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VisitorsService} from '../../service/visitors.service';
 import {NotificationService} from '../../shared/util/notification.service';
 import {Visitors} from '../../model/visitors';
+import {CheckedVisitors} from '../../model/checked-visitors';
 
 @Component({
   selector: 'app-checked-out-visitors',
@@ -10,12 +11,13 @@ import {Visitors} from '../../model/visitors';
 })
 export class CheckedOutVisitorsComponent implements OnInit {
 
-  visitorsList : Visitors[];
 
   constructor(
     private visitorService : VisitorsService,
     private notificationService : NotificationService
   ) { }
+
+  checkoutVisitors : CheckedVisitors[];
 
   visited = [
     {
@@ -117,12 +119,13 @@ export class CheckedOutVisitorsComponent implements OnInit {
 }
 
   ngOnInit() {
+   this._getVisitorsList();
   }
 
   _getVisitorsList(){
    this.visitorService.getAllVisitors('',0).subscribe((data: Object[])=>{
      if (data['success']){
-       this.visitorsList = data['body'].content;
+       this.checkoutVisitors = data['body'].content;
      }else {
        this.notificationService.showError("Record not found","");
      }

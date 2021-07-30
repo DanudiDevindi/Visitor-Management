@@ -28,7 +28,7 @@
                         Valid visitor detail is required.
                     </div>
                 </div>
-                
+
             </div>
             </form>
     </div>
@@ -49,17 +49,17 @@
            <th scope="col"> Designation</th>
          </tr>
        </thead>
-       <tbody *ngFor="let visiteda of pageOfItems">
+       <tbody *ngFor="let visitor of checkoutVisitors">
          <tr>
-          <td>{{visiteda.passnumber}}</td>
-           <td>{{visiteda.checkedintime}}</td>
-           <td>{{visiteda.nicpassport}}</td>
-           <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastname}}</td>
-           <td>{{visiteda.mobile}}</td>
-           <td>{{visiteda.email}}</td>
-           <td>{{visiteda.staffmembername}}</td>
-           <td>{{visiteda.designation}}</td>
+           <td>{{visitor.passCard.name}}</td>
+           <td>{{visitor.checkInTime}}</td>
+           <td>{{visitor.visitor.nic}}</td>
+           <td>{{visitor.visitor.firstName}}</td>
+           <td>{{visitor.visitor.lastName}}</td>
+           <td>{{visitor.visitor.mobile}}</td>
+           <td>{{visitor.visitor.email}}</td>
+           <td>{{visitor.employee.firstName}}</td>
+           <td>{{visitor.employee.designation}}</td>
 
          </tr>
         </tbody>
