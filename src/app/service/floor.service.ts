@@ -39,4 +39,28 @@ export class FloorService {
     return this.httpClient.get(url,{headers});
   }
 
+  public deleteFloor(floorId){
+    let url = `${this.BASE_URL+'v1/floor/delete?id='+floorId}`;
+    let token = localStorage.getItem('access_token');
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token
+      });
+
+    return this.httpClient.patch(url,{headers});
+  }
+
+  public updateFloor(floor){
+    let url = `${this.BASE_URL+'v1/floor/update'}`;
+    let token = localStorage.getItem('access_token');
+
+    const headers =
+      new HttpHeaders({
+        'Authorization': 'Bearer '+token,
+        'Content-Type': 'application/json'
+      });
+
+    return this.httpClient.put(url,floor,{headers});
+  }
+
 }

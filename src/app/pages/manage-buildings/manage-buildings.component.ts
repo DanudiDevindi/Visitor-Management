@@ -208,4 +208,44 @@ export class ManageBuildingsComponent implements OnInit {
    }
   }
 
+  _deleteFloor(floorId){
+   this.floorService.deleteFloor(floorId).subscribe((data)=>{
+     if (data['success']){
+       this.notificationService.showSuccess("Floor deleted success","");
+       this._getFloorsByBuildingId();
+     }else{
+       this.notificationService.showError("Floor delete failed","");
+     }
+   },error => {
+     this.notificationService.showError("Floor delete failed","");
+   })
+  }
+
+  _updateFloor(){
+   let status = '';
+   if (this.floorActive){
+     status = "ACTIVE";
+   }else{
+     status = "INACTIVE";
+   }
+
+   let floor = {
+     floorId : this.updateFloorId,
+     name : this.floorName,
+     status : status,
+     buildingId : this.floorBuildingId
+   }
+
+   this.floorService.updateFloor(floor).subscribe((data)=>{
+     if (data['success']){
+       this.notificationService.showSuccess("Floor update success","");
+     }else{
+       this.notificationService.showError("Floor update failed","");
+     }
+   },error => {
+     this.notificationService.showError("Floor update failed","");
+   });
+
+  }
+
 }
