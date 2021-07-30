@@ -15,6 +15,10 @@ export class ManageBuildingsComponent implements OnInit {
 
   @ViewChild('addemployee', {static: false})
   public modaleaddemployee: ModalComponent
+  @ViewChild('editemployee', {static: false})
+  public modaleeditemployee: ModalComponent
+  @ViewChild('managefloor', {static: false})
+  public modalemanagefloor: ModalComponent
   buildingList: Building[];
   floorList: BuildingFloors[];
 
@@ -62,6 +66,8 @@ export class ManageBuildingsComponent implements OnInit {
 
   pageOfItems: Array<any>;
   addEmpTitle: any = 'Add Employee';
+  editEmpTitle: any = 'Edit Employee';
+  manageFloorTitle: any = 'Manage Floor';
 
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
@@ -127,6 +133,7 @@ export class ManageBuildingsComponent implements OnInit {
     } else {
       this.notificationService.showError("Floor name is required!", "")
     }
+    this.modalemanagefloor.hide()
   }
 
   _loadBuildingDetails(id, name, status) {
@@ -138,6 +145,7 @@ export class ManageBuildingsComponent implements OnInit {
     } else if (status === "INACTIVE") {
       this.active = false;
     }
+    this.modaleeditemployee.show()
   }
 
   checkValue(event: any) {
@@ -173,11 +181,13 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Building update failed!", "");
       });
     }
+    this.modaleeditemployee.hide()
   }
 
   _getBuildingId(buildId) {
     this.floorBuildingId = buildId;
     this._getFloorsByBuildingId();
+    this.modalemanagefloor.show()
   }
 
   _deleteBuilding(buildingId) {
@@ -228,6 +238,7 @@ export class ManageBuildingsComponent implements OnInit {
     }, error => {
       this.notificationService.showError("Floor delete failed", "");
     })
+    this.modalemanagefloor.hide()
   }
 
   _updateFloor() {
@@ -254,7 +265,7 @@ export class ManageBuildingsComponent implements OnInit {
     }, error => {
       this.notificationService.showError("Floor update failed", "");
     });
-
+    this.modalemanagefloor.hide()
   }
 
   viewBuildingModal() {

@@ -39,7 +39,7 @@ const MENUITEMS = [
         short_label: 'D',
         name: 'Dashboard',
         type: 'link',
-     
+
       },
   {
   state: 'manage-staff',
@@ -82,24 +82,24 @@ const MENUITEMS = [
       short_label: 'C',
       name: 'Checked In Visitors',
       type: 'link',
-    
+
     },
     {
       state: 'checked-out-visitors',
       short_label: 'C',
       name: 'Visit History',
       type: 'link',
-    
+
     },
     {
       state: 'overdue-checked-in',
       short_label: 'C',
       name: 'Overdue Checked In',
       type: 'link',
-    
+
     },
     ]
-    
+
 
   }
 ];
@@ -110,7 +110,7 @@ export class MenuItems {
     return MENUITEMS;
   }
 
-  /*add(menu: Menu) {
-    MENUITEMS.push(menu);
-  }*/
+  // add(menu: Menu) {
+  //   MENUITEMS.push(menu);
+  // }
 }
