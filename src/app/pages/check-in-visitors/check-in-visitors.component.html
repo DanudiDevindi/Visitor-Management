@@ -124,7 +124,7 @@
           </div>
         </div>
         <div class="mb-3" *ngIf="otherPurpose==true">
-          <textarea rows="4" cols="50" class="form-control" placeholder="enter text" id="message" maxlength="500"
+          <textarea rows="4" cols="50" class="form-control" placeholder="enter purpose" id="message" maxlength="500"
                     [(ngModel)]="reason" [ngModelOptions]="{standalone: true}" required></textarea>
         </div>
       </form>
@@ -138,7 +138,7 @@
           <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
             <label for="visitor">Visitor</label>
             <input type="text" class="form-control" formControlName="nicVisitor" id="visitor" [(ngModel)]="visitorNic"
-                   placeholder="Search by Name,mobile" required>
+                   placeholder="Search by NIC" required>
             <div
               *ngIf="f.nicVisitor.touched && f.nicVisitor.errors"
               class="notification-validation-error-label"

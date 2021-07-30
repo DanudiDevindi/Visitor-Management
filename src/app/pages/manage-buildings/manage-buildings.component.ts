@@ -65,8 +65,8 @@ export class ManageBuildingsComponent implements OnInit {
 
 
   pageOfItems: Array<any>;
-  addEmpTitle: any = 'Add Employee';
-  editEmpTitle: any = 'Edit Employee';
+  addEmpTitle: any = 'Add Building';
+  editEmpTitle: any = 'Edit Building';
   manageFloorTitle: any = 'Manage Floor';
 
   onChangePage(pageOfItems: Array<any>) {
