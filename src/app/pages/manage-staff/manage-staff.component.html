@@ -17,7 +17,7 @@
             </form>
     </div>
     <div class="col-6 btn-rec">
-        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddEmployee">Add Employee</button>
+        <button type="button" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" (click)="addEmpl()">Add Employee</button>
     </div>
 </div>
 <div class="table-card">
@@ -43,19 +43,20 @@
            <td>{{employee.email}}</td>
            <td>{{employee.designation}}</td>
            <td>{{employee.nic}}</td>
-           <td><button type="button" (click)="_loadEmployeeDetails(employee.employeeId,employee.firstName,employee.lastName,employee.nic,employee.email,employee.mobile,employee.designation)" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editemployee">Edit</button></td>
+           <td><button type="button" (click)="_loadEmployeeDetails(employee.employeeId,employee.firstName,employee.lastName,employee.nic,employee.email,employee.mobile,employee.designation)" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" >Edit</button></td>
 <!--
            modal for edit employee -->
-           <div id="editemployee" class="modal fade">
-            <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
-                <div class="modal-content">
-                    <div class="modal-header" style="border: white;">
-                        <div class="model-header-title">Update Employee</div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                  <div class="modal-body">
+<!--           <div id="editemployee" class="modal fade">-->
+<!--            <div class="modal-dialog modal-xl" role="document" style="width: 100%;">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header" style="border: white;">-->
+<!--                        <div class="model-header-title">Update Employee</div>-->
+<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                          <span aria-hidden="true">&times;</span>-->
+<!--                        </button>-->
+<!--                      </div>-->
+           <modal #editEmployee [title]=editEmployeeTitle [size]="'modal-xl'">
+           <div class="modal-body">
                      <form role="form">
                         <div class="row">
                             <div class="col-md-6">
@@ -150,9 +151,10 @@
                                     </div>
                                 </form>
                     </div>
-                </div>
-            </div>
-        </div>
+           </modal>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
          </tr>
         </tbody>
@@ -163,15 +165,16 @@
 
 
      <!-- Modal for add employee -->
-<div id="AddEmployee" class="modal fade">
-    <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
-        <div class="modal-content">
-            <div class="modal-header" style="border: white;">
-                <div class="model-header-title">Add New Employee</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+<!--<div id="AddEmployee" class="modal fade">-->
+<!--    <div class="modal-dialog modal-xl" role="document" style="width: 100%;">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header" style="border: white;">-->
+<!--                <div class="model-header-title">Add New Employee</div>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                  <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--              </div>-->
+<modal #addEmployee [title]=addEmpTitle [size]="'modal-xl'">
           <div class="modal-body">
              <form role="form">
                 <div class="row">
@@ -248,6 +251,7 @@
                             </div>
                         </form>
             </div>
-        </div>
-    </div>
-</div>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+</modal>

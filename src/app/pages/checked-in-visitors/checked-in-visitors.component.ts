@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {VisitorsService} from "../../service/visitors.service";
+import {Visitors} from "../../model/visitors";
 import {VisitService} from '../../service/visit.service';
 import {NotificationService} from '../../shared/util/notification.service';
 import {CheckedVisitors} from '../../model/checked-visitors';
@@ -12,12 +14,14 @@ export class CheckedInVisitorsComponent implements OnInit {
 
   constructor(
     private visitService : VisitService,
+    private visitorService : VisitorsService,
     private notificationService : NotificationService
   ) { }
 
   checkedVisitors : CheckedVisitors[];
 
   customSearchText : string;
+  checkedinVisitors : Visitors[];
 
   visited = [
     {

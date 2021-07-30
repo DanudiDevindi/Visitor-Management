@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class BuildingServiceService {
 
   private BASE_URL = 'http://198.211.109.205:8082/';
+  // private BASE_URL = 'http://localhost:8082/'
 
   constructor(private httpClient : HttpClient) { }
 
