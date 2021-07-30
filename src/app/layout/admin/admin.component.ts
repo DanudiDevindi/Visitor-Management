@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
-import {MenuItems} from '../../shared/menu-items/menu-items';
+import {Menu, MenuItems} from '../../shared/menu-items/menu-items';
 import {AuthenticationService} from '../../service/authentication.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -56,6 +57,7 @@ import {AuthenticationService} from '../../service/authentication.service';
     ])
   ]
 })
+
 export class AdminComponent implements OnInit {
   navType: string; /* st1, st2(default), st3, st4 */
   themeLayout: string; /* vertical(default) */
@@ -97,6 +99,13 @@ export class AdminComponent implements OnInit {
   configOpenRightBar: string;
   isSidebarChecked: boolean;
   isHeaderChecked: boolean;
+
+  userType : string;
+
+  sideBarArray : Menu[];
+  shoeSideBarArray : Menu[];
+
+  sideMenu : Menu;
 
   @ViewChild('searchFriends', /* TODO: add static flag */ {static: false}) search_friends: ElementRef;
 
@@ -163,6 +172,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.setBackgroundPattern('pattern2');
+    this._getUserType();
   }
 
   onResize(event) {
@@ -293,5 +303,26 @@ export class AdminComponent implements OnInit {
 
   _logOut(){
     this.authenticateService.logOut();
+  }
+
+
+  _getUserType(){
+    this.userType = localStorage.getItem('userType');
+    this.sideBarArray = this.menuItems.getAll();
+    if (this.userType === "ADMIN"){
+      for (let i in this.sideBarArray){
+        let label = this.sideBarArray[i].label;
+        if (label === "admin"){
+          this.sideMenu = this.sideBarArray[i];
+        }
+      }
+    }else if (this.userType === "RECEP"){
+      for (let i in this.sideBarArray){
+        let label = this.sideBarArray[i].label;
+        if (label === "Reception"){
+          this.sideMenu = this.sideBarArray[i];
+        }
+      }
+    }
   }
 }

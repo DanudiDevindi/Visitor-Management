@@ -25,14 +25,18 @@ export interface MainMenuItems {
   children?: ChildrenItems[];
 }
 
-export interface Menu {
+export class Menu {
   label: string;
   main: MainMenuItems[];
+  constructor(label: string, main: MainMenuItems[]) {
+  this.label = label;
+  this.main = main;
+}
 }
 
 const MENUITEMS = [
   {
-    label: '',
+    label: 'admin',
     main: [
       {
         state: 'dashboard',
@@ -65,11 +69,10 @@ const MENUITEMS = [
 
 
 
-
 ]
   },
   {
-    label: 'Manage Visits',
+    label: 'Reception',
     main: [
       {
         state: 'check-in-visitors',

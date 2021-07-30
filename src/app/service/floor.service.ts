@@ -47,7 +47,7 @@ export class FloorService {
         'Authorization': 'Bearer '+token
       });
 
-    return this.httpClient.patch(url,{headers});
+    return this.httpClient.patch(url,'',{headers});
   }
 
   public updateFloor(floor){
