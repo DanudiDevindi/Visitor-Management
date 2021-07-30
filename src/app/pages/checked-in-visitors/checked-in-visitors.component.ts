@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {VisitorsService} from "../../service/visitors.service";
+import {NotificationService} from "../../shared/util/notification.service";
+import {Visitors} from "../../model/visitors";
 
 @Component({
   selector: 'app-checked-in-visitors',
@@ -7,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckedInVisitorsComponent implements OnInit {
 
-  constructor() { }
+  checkedinVisitors : Visitors[];
 
+
+  constructor(
+    private visitorService : VisitorsService,
+    private notificationService : NotificationService
+  ) { }
   visited = [
     {
         passnumber: '1236',

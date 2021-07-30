@@ -17,7 +17,7 @@
             </form>
     </div>
     <div class="col-6 btn-rec">
-        <button type="submit" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddReceptionist">Add Receptionist</button>
+        <button type="button" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" (click)="addReceptionistAccount()">Add Receptionist</button>
     </div>
 </div>
 <div class="table-card">
@@ -47,20 +47,21 @@
            <td>{{reception.email}}</td>
            <td>{{reception.userName}}</td>
            <td>{{reception.status}}</td>
-           <td><button type="button" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editReceptionist"
+           <td><button type="button" class="btn btn-primary mb-3 edit-btn" data-toggle="modal"
            (click)="_loadReceptionDetails(reception.userId,reception.userName,reception.firstName,reception.lastName,reception.nic,reception.email,reception.mobile,reception.password,reception.status,reception.role)">Edit</button></td>
 <!--
            modal for edit receptionist -->
-           <div id="editReceptionist" class="modal fade">
-            <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
-                <div class="modal-content">
-                 <div class="modal-header" style="border: white;">
-                    <div class="model-header-title">Update Receptionist</div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                <div class="modal-body">
+<!--           <div id="editReceptionist" class="modal fade">-->
+<!--            <div class="modal-dialog modal-xl" role="document" style="width: 100%;">-->
+<!--                <div class="modal-content">-->
+<!--                 <div class="modal-header" style="border: white;">-->
+<!--                    <div class="model-header-title">Update Receptionist</div>-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                      <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                  </div>-->
+           <modal #editReceptionist [title]=editReceptionistTitle [size]="'modal-xl'">
+           <div class="modal-body">
                      <form role="form">
                         <div class="row">
                             <div class="col-md-6">
@@ -164,9 +165,10 @@
                                     </div>
                                 </form>
                     </div>
-                </div>
-            </div>
-        </div>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+           </modal>
 
          </tr>
         </tbody>
@@ -177,15 +179,16 @@
 
 
      <!-- Modal for add receptionist -->
-<div id="AddReceptionist" class="modal fade">
-    <div class="modal-dialog modal-xl" role="document" style="width: 100%;">
-        <div class="modal-content">
-            <div class="modal-header" style="border: white;">
-                <div class="model-header-title">Add New Receptionist</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+<!--<div id="AddReceptionist" class="modal fade">-->
+<!--    <div class="modal-dialog modal-xl" role="document" style="width: 100%;">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header" style="border: white;">-->
+<!--                <div class="model-header-title">Add New Receptionist</div>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                  <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--              </div>-->
+<modal #addReceptionist [title]=addReceptionistTitle [size]="'modal-xl'">
          <div class="modal-body">
              <form role="form">
                 <div class="row">
@@ -271,6 +274,7 @@
                             </div>
                         </form>
             </div>
-        </div>
-    </div>
-</div>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+

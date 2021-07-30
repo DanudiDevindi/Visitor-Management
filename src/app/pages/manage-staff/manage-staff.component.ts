@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, ViewChild} from '@angular/core'
 import {SystemEmployeeService} from '../../service/system-employee.service'
 import {Employee} from '../../model/employee'
 import {NotificationService} from '../../shared/util/notification.service'
+import {ModalComponent} from "../../modalview/modal.component";
 
 @Component({
   selector: 'app-manage-staff',
@@ -9,6 +10,12 @@ import {NotificationService} from '../../shared/util/notification.service'
   styleUrls: ['./manage-staff.component.scss']
 })
 export class ManageStaffComponent implements OnInit {
+
+  @ViewChild('addEmployee', {static: false})
+  public modalAddEmployee: ModalComponent
+
+  @ViewChild('editEmployee', {static: false})
+  public modalEditEmployee: ModalComponent
 
   employeeList: Employee[]
   empFirstName: string
@@ -61,6 +68,8 @@ export class ManageStaffComponent implements OnInit {
 
   ]
   pageOfItems: Array<any>
+  addEmpTitle: any = "Add Employee";
+  editEmployeeTitle: any = 'Edit Employee';
 
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
@@ -91,6 +100,7 @@ export class ManageStaffComponent implements OnInit {
         this.notification.showError("Employee Added Failed","")
       })
     }
+    this.modalAddEmployee.hide()
   }
 
   employeeCustomSearch(){
@@ -113,6 +123,7 @@ export class ManageStaffComponent implements OnInit {
    this.empUpdateEmail = email;
    this.empUpdateMobile = mobile;
     this.empUpdateDesignation = designation;
+    this.modalEditEmployee.show()
   }
 
   _updateEmployee(){
@@ -131,6 +142,7 @@ export class ManageStaffComponent implements OnInit {
             this.notification.showError("Employee Update Failed","");
           });
     }
+    this.modalEditEmployee.hide()
   }
 
   _checkUpdateFormFieldsEmpty(){
@@ -213,4 +225,7 @@ export class ManageStaffComponent implements OnInit {
     }
   }
 
+  addEmpl() {
+    this.modalAddEmployee.show()
+  }
 }
