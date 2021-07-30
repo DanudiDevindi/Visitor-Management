@@ -114,7 +114,7 @@ export class CheckInVisitorsComponent implements OnInit {
         this.activePassList = data['body']
       }
     }, error => {
-      this.notification.showError("Something went wrong", '"')
+      this.notification.showError(error['msg'], "")
     })
   }
 
@@ -124,7 +124,7 @@ export class CheckInVisitorsComponent implements OnInit {
         this.buildingList = data['body']
       }
     }, error => {
-      this.notification.showError("Something went wrong", '"')
+      this.notification.showError(error['msg'], "")
     })
   }
 
@@ -137,7 +137,7 @@ export class CheckInVisitorsComponent implements OnInit {
         }
       },
       error => {
-        this.notification.showError("Something went wrong", '"')
+        this.notification.showError(error['msg'], "")
       })
   }
 
@@ -218,7 +218,7 @@ export class CheckInVisitorsComponent implements OnInit {
         }
 
       }, error => {
-        this.notification.showError("failed to add Visitor(s)", "")
+        this.notification.showError(error['msg'], "")
       })
     } else {
       this.notification.showError("Select visitor first", "")
@@ -280,7 +280,7 @@ export class CheckInVisitorsComponent implements OnInit {
           this.notification.showWarning("No floors detected for selected building", "")
         }
       }, error => {
-        this.notification.showError("Something went wrong", '"')
+        this.notification.showError(error['msg'], "")
       })
     }
   }
@@ -298,7 +298,7 @@ export class CheckInVisitorsComponent implements OnInit {
         }
       },
       error => {
-        this.notification.showError("Something went wrong", '"')
+        this.notification.showError(error['msg'], "")
       })
 
   }
