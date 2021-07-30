@@ -66,6 +66,33 @@ const MENUITEMS = [
   type: 'link',
 
 },
+{
+  state: 'check-in-visitors',
+  short_label: 'C',
+  name: 'Check In Visitors',
+  type: 'link',
+},
+{
+state: 'checked-in-visitors',
+short_label: 'C',
+name: 'Checked In Visitors',
+type: 'link',
+
+},
+{
+state: 'checked-out-visitors',
+short_label: 'C',
+name: 'Visit History',
+type: 'link',
+
+},
+{
+state: 'overdue-checked-in',
+short_label: 'C',
+name: 'Overdue Checked In',
+type: 'link',
+
+},
 
 
 
