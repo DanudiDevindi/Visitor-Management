@@ -102,7 +102,6 @@ export class ManageBuildingsComponent implements OnInit {
     } else {
       this.notificationService.showError("Building name is required!", "");
     }
-
     this.modaleaddemployee.hide();
   }
 
