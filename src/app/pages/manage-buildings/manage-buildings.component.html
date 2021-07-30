@@ -38,17 +38,10 @@
       <tr>
         <td>{{build.name}}</td>
         <td>{{build.status}}</td>
+        <td><button type="button" (click)="_getBuildingId(build.buildingId)" id="btn-floor" class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors</button></td>
         <td>
-          <button type="button" (click)="_getBuildingId(build.buildingId)" id="btn-floor"
-                  class="btn btn-primary mb-3 floor-btn" data-toggle="modal" data-target="#mangefloor">Floors
-          </button>
-        </td>
-        <td>
-          <button type="button" id="btn-building-edit"
-                  (click)="_loadBuildingDetails(build.buildingId,build.name,build.status)"
-                  class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit
-          </button>
-          <button type="button" class="btn btn-danger mb-3 edit-btn">Delete</button>
+          <button type="button" id="btn-building-edit" (click)="_loadBuildingDetails(build.buildingId,build.name,build.status)" class="btn btn-primary mb-3 edit-btn" data-toggle="modal" data-target="#editbulding">Edit</button>
+          <button type="button" (click)="_deleteBuilding(build.buildingId)" class="btn btn-danger mb-3 edit-btn">Delete</button>
         </td>
         <!--
                    modal for edit building -->
@@ -57,7 +50,7 @@
             <div class="modal-content">
               <div class="modal-header" style="border: white;">
                 <div class="model-header-title">Update Building</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -69,16 +62,14 @@
                       <div class="form-group">
                         <label class="control-label">Building Name</label>
                         <div>
-                          <input type="text" class="form-control input-lg" [(ngModel)]="updateBuildingName"
-                                 name="BuildingNameupdate" id="buildingNameupdate" placeholder="Building Name" value="">
+                          <input type="text" class="form-control input-lg" [(ngModel)]="updateBuildingName" name="BuildingNameupdate" id="buildingNameupdate" placeholder="Building Name" value="">
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="custom-control custom-switch" style="margin-top: 8%; text-align: center;">
-                          <input type="checkbox" class="custom-control-input" [(ngModel)]="active" name="active"
-                                 id="building-status" (change)="checkValue(active)">
+                          <input type="checkbox" class="custom-control-input" [(ngModel)]="active" name="active" id="building-status" (change)="checkValue(active)">
                           <label class="custom-control-label" for="building-status">Active</label>
                         </div>
                       </div>
@@ -95,8 +86,7 @@
                         <div class="col-md-6" style="text-align: center;">
                           <div class="form-group add-btn-div">
                             <div>
-                              <button type="button" (click)="_updateBuilding()" id="building-updatebtn"
-                                      class="btn btn-primary add-btn-modal  update-btn-align">
+                              <button type="button" (click)="_updateBuilding()" id="building-updatebtn"class="btn btn-primary add-btn-modal  update-btn-align">
                                 Update
                               </button>
                             </div>
@@ -130,15 +120,14 @@
                       <div class="form-group">
                         <label class="control-label">Floor Name</label>
                         <div>
-                          <input type="text" class="form-control input-lg" [(ngModel)]="floorName" name="floorname"
-                                 id="floorname" placeholder="Floor Name" value="">
+                          <input type="text" class="form-control input-lg" [(ngModel)]="floorName" name="floorname" id="floorname" placeholder="Floor Name" value="">
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="custom-control custom-switch" style="margin-top: 8%; text-align: center;">
-                          <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                          <input type="checkbox" [(ngModel)]="floorActive" name="floorActive"  class="custom-control-input" id="customSwitch1" (change)="checkFloorValue(floorActive?true:false)">
                           <label class="custom-control-label" for="customSwitch1" *ngIf="show">Active</label>
                         </div>
                       </div>
@@ -155,12 +144,10 @@
                         <div class="col-md-6" style="text-align: center;">
                           <div class="form-group add-btn-div">
                             <div>
-                              <button type="button" (click)="_floorCreate()" id="add-floor-btn"
-                                      class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
+                              <button type="button" (click)="_floorCreate()" id="add-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="hide">
                                 Add
                               </button>
-                              <button type="submit" id="update-floor-btn"
-                                      class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="show">
+                              <button type="submit" (click)="_updateFloor()" id="update-floor-btn" class="btn btn-primary add-btn-modal  update-btn-align" *ngIf="show" >
                                 Update
                               </button>
                             </div>
@@ -183,18 +170,11 @@
 
                       </tr>
                       </thead>
-                      <tbody *ngFor="let visiteda of pageOfItems">
+                      <tbody *ngFor="let floor of floorList">
                       <tr>
-                        <td>{{visiteda.title}}</td>
-                        <td>{{visiteda.address}}</td>
-                        <td>
-                          <button type="submit" id="floor-edit-btn" class="btn btn-primary mb-3 edit-btn" id="editbtn"
-                                  (click)="toggle()">Edit
-                          </button>
-                          <button id="floor-delete-btn" type="submit" class="btn btn-danger mb-3 edit-btn">Delete
-                          </button>
-                        </td>
-                      </tr>
+                        <td>{{floor.name}}</td>
+                        <td>{{floor.status}}</td>
+                        <td><button type="submit"  id="floor-edit-btn" class="btn btn-primary mb-3 edit-btn" id="editbtn" (click)="_loadFloorDetails(floor.floorId,floor.name,floor.status)">Edit</button><button (click)="_deleteFloor(floor.floorId)" id="floor-delete-btn" type="submit" class="btn btn-danger mb-3 edit-btn">Delete</button></td></tr>
                       </tbody>
                     </table>
                     <jw-pagination [items]="visited" (changePage)="onChangePage($event)" class="pagi"></jw-pagination>
@@ -213,39 +193,47 @@
 
 
 <!-- Modal for add building -->
-
-
-<modal #addempl [title]="" [size]="'modal-xl'">
-  <div class="modal-body">
-    <form role="form">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label class="control-label">Building Name</label>
-            <div>
-              <input type="text" [(ngModel)]="buildingName" class="form-control input-lg" id="buildingName"
-                     placeholder="Building Name" name="BuildingName">
+<!--<div id="AddBuilding" #addemployee class="modal fade">-->
+<!--  <div class="modal-dialog modal-lg" role="document" style="width: 100%;">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header" style="border: white;">-->
+<!--        <div class="model-header-title">Add New Building</div>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<modal #addemployee [title]=addEmpTitle [size]="'modal-xl'">
+      <div class="modal-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">Building Name</label>
+                <div>
+                  <input type="text" [(ngModel)]="buildingName" class="form-control input-lg" id="buildingName" placeholder="Building Name" name="BuildingName">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6">
-          <div class="form-group add-btn-div">
-            <div style="text-align: center;">
-              <button type="button" (click)="_createBuilding()" class="btn btn-primary add-btn-modal">
-                Add
-              </button>
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="form-group add-btn-div">
+                <div style="text-align: center;">
+                  <button type="button" (click)="_createBuilding()" class="btn btn-primary add-btn-modal">
+                    Add
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-  </div>
+
+
+
 </modal>
-
-
-
-
