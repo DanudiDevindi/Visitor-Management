@@ -87,7 +87,7 @@ const MENUITEMS = [
     {
       state: 'checked-out-visitors',
       short_label: 'C',
-      name: 'Checked Out Visitors',
+      name: 'Visit History',
       type: 'link',
     
     },

@@ -1,24 +1,25 @@
-
-
 <div class="header-title">Manage Buildings</div>
 <div class="row">
   <div class="col-lg-6">
     <form class="checked-in-visitor-form">
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 mb-3">
-          <input type="text" class="form-control" id="visitor-building" placeholder="Search by pass number , visitor's mobile" required>
+          <input type="text" class="form-control" id="visitor-building"
+                 placeholder="Search by Building Name" required>
           <div class="invalid-feedback">
             Valid visitor detail is required.
           </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12 mb-3" style="text-align: center;">
-          <button type="submit" id="building-visitor-search"class="btn btn-primary mb-3 search-btn">Search</button>
+          <!-- <button type="submit" id="building-visitor-search" class="btn btn-primary mb-3 search-btn">Search</button> -->
         </div>
       </div>
     </form>
   </div>
   <div class="col-lg-6 btn-rec">
-    <button type="submit" id="btn-addbuilding" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal" data-target="#AddBuilding">Add Building</button>
+    <button type="submit" id="btn-addbuilding" class="btn btn-primary mb-3 add-resep-btn" data-toggle="modal"
+            (click)="viewBuildingModal()">Add Building
+    </button>
   </div>
 </div>
 <div class="table-card">
