@@ -11,7 +11,7 @@ export class SystemEmployeeService {
   constructor(private httpClient : HttpClient) { }
 
   public getEmployeeList(searchText,pageNo){
-    let url = `${this.BASE_URL+'v1/employee/all?word='+searchText+'&index='+pageNo+'&size=10'}`;
+    let url = `${this.BASE_URL+'v1/employee/all?word='+searchText+'&index='+pageNo+'&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({

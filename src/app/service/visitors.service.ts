@@ -11,7 +11,7 @@ export class VisitorsService {
   constructor(private httpClient : HttpClient) { }
 
   public getAllVisitors(searchText,pageNo){
-    let url = `${this.BASE_URL+'v1/visitor/filter?word='+searchText+'&index='+pageNo+'&size=10'}`;
+    let url = `${this.BASE_URL+'v1/visitor/filter?word='+searchText+'&index='+pageNo+'&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({

@@ -12,7 +12,7 @@ export class VisitService {
   constructor(private httpClient : HttpClient) { }
 
   public getCheckedList(searchText,pageNo){
-    let url = `${this.BASE_URL+'v1/visit/checked?word='+searchText+'&index='+pageNo+'&size=10'}`;
+    let url = `${this.BASE_URL+'v1/visit/checked?word='+searchText+'&index='+pageNo+'&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({
@@ -24,7 +24,7 @@ export class VisitService {
   }
 
   public getOverDueList(text,pageNo){
-    let url = `${this.BASE_URL+'v1/visit/overdue?word='+text+'&index='+pageNo+'&size=10'}`;
+    let url = `${this.BASE_URL+'v1/visit/overdue?word='+text+'&index='+pageNo+'&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({
@@ -36,7 +36,7 @@ export class VisitService {
   }
 
   public getVisitCheckingHistory(){
-    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word=12345&startDate=2021-07-07T00:00:00&endData=2021-07-08T00:00:00&index=0&size=10'}`;
+    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word=12345&startDate=2021-07-07T00:00:00&endData=2021-07-08T00:00:00&index=0&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({

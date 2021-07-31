@@ -11,7 +11,7 @@ export class SystemUserService {
   constructor(private httpClient : HttpClient) { }
 
   public getSystemUsers(searchText,pageNo){
-    let url = `${this.BASE_URL+'v1/receptionist/all?word='+searchText+'&index='+pageNo+'&size=10'}`;
+    let url = `${this.BASE_URL+'v1/receptionist/all?word='+searchText+'&index='+pageNo+'&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({
