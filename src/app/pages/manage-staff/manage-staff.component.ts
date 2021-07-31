@@ -93,6 +93,7 @@ export class ManageStaffComponent implements OnInit {
       this.systemEmployeeService.createEmployee(this.empFirstName, this.empLastName, this.empNic, this.empEmail, this.empMobile, this.empDesignation).subscribe((data) => {
         if (data['success']) {
           this.notification.showSuccess("Employee Added Success", "");
+          this._clearStaffAddTextFields();
         } else {
           this.notification.showError("Employee Added Failed", "")
         }
@@ -227,5 +228,14 @@ export class ManageStaffComponent implements OnInit {
 
   addEmpl() {
     this.modalAddEmployee.show()
+  }
+
+  _clearStaffAddTextFields(){
+    this.empFirstName = '';
+    this.empLastName = '';
+    this.empMobile = '';
+    this.empEmail = '';
+    this.empDesignation = '';
+    this.empNic = '';
   }
 }

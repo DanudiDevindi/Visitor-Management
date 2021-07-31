@@ -101,6 +101,7 @@ export class ManageBuildingsComponent implements OnInit {
       this.buildingService.createBuilding(data).subscribe((data) => {
         this.notificationService.showSuccess("Building added success!", "");
         this._getBuildingList();
+        this.buildingName = '';
       }, error => {
         this.notificationService.showError(error['msg'], "")      })
     } else {
@@ -122,6 +123,7 @@ export class ManageBuildingsComponent implements OnInit {
         if (data['success']) {
           this.notificationService.showSuccess("Floor Added Success!", "");
           this._getFloorsByBuildingId();
+          this.floorName = '';
         } else {
           this.notificationService.showError("Floor Added failed", "");
         }

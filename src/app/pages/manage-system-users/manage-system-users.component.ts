@@ -110,6 +110,7 @@ export class ManageSystemUsersComponent implements OnInit {
       if (data['success']) {
         this.notificationService.showSuccess("Reception Added Success", "");
         this._getSystemUsers();
+        this._clearSystemUserTextInputs();
       } else {
         this.notificationService.showError("Reception Added Failed", "");
       }
@@ -189,5 +190,15 @@ export class ManageSystemUsersComponent implements OnInit {
 
   addReceptionistAccount() {
     this.modalAddReceptionist.show()
+  }
+
+  _clearSystemUserTextInputs(){
+    this.username = '';
+    this.firstName = '';
+    this.lastName = '';
+    this.nic = '';
+    this.email = '';
+    this.mobile = '';
+    this.password = '';
   }
 }
