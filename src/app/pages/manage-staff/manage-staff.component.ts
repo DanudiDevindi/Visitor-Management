@@ -25,29 +25,29 @@ export class ManageStaffComponent implements OnInit {
   empDesignation: string
   empNic: string
 
-  empId : number;
-  empUpdateFirstName : string;
-  empUpdateLastName : string;
-  empUpdateMobile : string;
-  empUpdateEmail : string;
-  empUpdateDesignation : string;
-  empUpdateNic : string;
+  empId: number;
+  empUpdateFirstName: string;
+  empUpdateLastName: string;
+  empUpdateMobile: string;
+  empUpdateEmail: string;
+  empUpdateDesignation: string;
+  empUpdateNic: string;
 
-  customSearchText : string;
+  customSearchText: string;
 
-  updateFirstnameError : string = '';
-  updateLastnameError : string = '';
-  updateNicError : string = '';
-  updateMobileError : string = '';
-  updateEmailError : string = '';
-  updateDesignationError : string = '';
+  updateFirstnameError: string = '';
+  updateLastnameError: string = '';
+  updateNicError: string = '';
+  updateMobileError: string = '';
+  updateEmailError: string = '';
+  updateDesignationError: string = '';
 
-  addFirstnameError : string = '';
-  addLastnameError : string = '';
-  addNicError : string = '';
-  addMobileError : string = '';
-  addEmailError : string = '';
-  addDesignationError : string = '';
+  addFirstnameError: string = '';
+  addLastnameError: string = '';
+  addNicError: string = '';
+  addMobileError: string = '';
+  addEmailError: string = '';
+  addDesignationError: string = '';
 
   constructor(private systemEmployeeService: SystemEmployeeService, private notification: NotificationService) {
   }
@@ -84,142 +84,142 @@ export class ManageStaffComponent implements OnInit {
     this.systemEmployeeService.getEmployeeList('', 0).subscribe((data: Object[]) => {
       this.employeeList = data['body'].content
     }, error => {
-      this.notification.showError("Records Not Found","")
+      this.notification.showError(error['msg'], "")
     })
   }
 
-  _createNewEmployee(){
-    if (this._checkAddFormFieldsEmpty()){
-      this.systemEmployeeService.createEmployee(this.empFirstName,this.empLastName,this.empNic,this.empEmail,this.empMobile,this.empDesignation).subscribe((data)=>{
-        if (data['success']){
-          this.notification.showSuccess("Employee Added Success","");
-        }else{
-          this.notification.showError("Employee Added Failed","")
+  _createNewEmployee() {
+    if (this._checkAddFormFieldsEmpty()) {
+      this.systemEmployeeService.createEmployee(this.empFirstName, this.empLastName, this.empNic, this.empEmail, this.empMobile, this.empDesignation).subscribe((data) => {
+        if (data['success']) {
+          this.notification.showSuccess("Employee Added Success", "");
+        } else {
+          this.notification.showError("Employee Added Failed", "")
         }
-      },error => {
-        this.notification.showError("Employee Added Failed","")
+      }, error => {
+        this.notification.showError(error['msg'], "")
       })
     }
     this.modalAddEmployee.hide()
   }
 
-  employeeCustomSearch(){
-   if (this.customSearchText !== ''){
-     this.systemEmployeeService.getEmployeeList(this.customSearchText,0).subscribe((data:Object[])=>{
-       this.employeeList = data['body'].content;
-     },error => {
-       this.notification.showError("Records Not Found","")
-     });
-   }else {
-     this._getSystemStaff();
-   }
+  employeeCustomSearch() {
+    if (this.customSearchText !== '') {
+      this.systemEmployeeService.getEmployeeList(this.customSearchText, 0).subscribe((data: Object[]) => {
+        this.employeeList = data['body'].content;
+      }, error => {
+        this.notification.showError(error['msg'], "")
+      });
+    } else {
+      this._getSystemStaff();
+    }
   }
 
-  _loadEmployeeDetails(id,firstName,lastName,nic,email,mobile,designation){
-   this.empId = id;
-   this.empUpdateFirstName = firstName;
-   this.empUpdateLastName = lastName;
-   this.empUpdateNic = nic;
-   this.empUpdateEmail = email;
-   this.empUpdateMobile = mobile;
+  _loadEmployeeDetails(id, firstName, lastName, nic, email, mobile, designation) {
+    this.empId = id;
+    this.empUpdateFirstName = firstName;
+    this.empUpdateLastName = lastName;
+    this.empUpdateNic = nic;
+    this.empUpdateEmail = email;
+    this.empUpdateMobile = mobile;
     this.empUpdateDesignation = designation;
     this.modalEditEmployee.show()
   }
 
-  _updateEmployee(){
-    if(this._checkUpdateFormFieldsEmpty()){
-      this.systemEmployeeService.updateEmployee(this.empId,this.empUpdateFirstName,this.empUpdateLastName,
-        this.empUpdateNic,this.empUpdateEmail,this.empUpdateMobile,this.empUpdateDesignation)
-        .subscribe((data)=>{
-            if (data['success']){
-              this.notification.showSuccess("Employee Update Success","");
+  _updateEmployee() {
+    if (this._checkUpdateFormFieldsEmpty()) {
+      this.systemEmployeeService.updateEmployee(this.empId, this.empUpdateFirstName, this.empUpdateLastName,
+        this.empUpdateNic, this.empUpdateEmail, this.empUpdateMobile, this.empUpdateDesignation)
+        .subscribe((data) => {
+            if (data['success']) {
+              this.notification.showSuccess("Employee Update Success", "");
               this._getSystemStaff();
-            }else {
-              this.notification.showError("Employee Update Failed","");
+            } else {
+              this.notification.showError("Employee Update Failed", "");
             }
           },
           error => {
-            this.notification.showError("Employee Update Failed","");
+            this.notification.showError(error['msg'], "")
           });
     }
     this.modalEditEmployee.hide()
   }
 
-  _checkUpdateFormFieldsEmpty(){
+  _checkUpdateFormFieldsEmpty() {
     this.updateDesignationError = "";
     this.updateFirstnameError = "";
     this.updateMobileError = "";
     this.updateLastnameError = "";
     this.updateNicError = "";
     this.updateEmailError = "";
-    if (this.empUpdateFirstName !== ''){
-      if (this.empUpdateMobile !== ''){
-        if (this.empUpdateLastName !== ''){
-          if (this.empUpdateEmail !== ""){
-            if (this.empUpdateDesignation !== ""){
-              if (this.empUpdateNic !== ""){
+    if (this.empUpdateFirstName !== '') {
+      if (this.empUpdateMobile !== '') {
+        if (this.empUpdateLastName !== '') {
+          if (this.empUpdateEmail !== "") {
+            if (this.empUpdateDesignation !== "") {
+              if (this.empUpdateNic !== "") {
                 return true;
-              }else{
+              } else {
                 this.updateNicError = "NIC is required";
                 return false;
               }
-            }else{
+            } else {
               this.updateDesignationError = "Designation is required";
               return false;
             }
-          }else{
+          } else {
             this.updateEmailError = "Email is required";
             return false;
           }
-        }else{
+        } else {
           this.updateLastnameError = "Last name is required";
           return false;
         }
-      }else{
+      } else {
         this.updateMobileError = "Mobile number is required";
         return false;
       }
-    }else {
+    } else {
       this.updateFirstnameError = "First name is required";
       return false;
     }
   }
 
-  _checkAddFormFieldsEmpty(){
+  _checkAddFormFieldsEmpty() {
     this.addFirstnameError = "";
     this.addMobileError = "";
     this.addLastnameError = "";
     this.addNicError = "";
     this.addDesignationError = "";
     this.addEmailError = "";
-    if (this.empFirstName !== ''){
-      if (this.empMobile !== ''){
-        if (this.empLastName !== ''){
-          if (this.empEmail !== ""){
-            if (this.empDesignation !== ""){
-              if (this.empNic !== ""){
+    if (this.empFirstName !== '') {
+      if (this.empMobile !== '') {
+        if (this.empLastName !== '') {
+          if (this.empEmail !== "") {
+            if (this.empDesignation !== "") {
+              if (this.empNic !== "") {
                 return true;
-              }else{
+              } else {
                 this.addNicError = "NIC is required";
                 return false;
               }
-            }else{
+            } else {
               this.addDesignationError = "Designation is required";
               return false;
             }
-          }else{
+          } else {
             this.addEmailError = "Email is required";
             return false;
           }
-        }else{
+        } else {
           this.addLastnameError = "Last name is required";
           return false;
         }
-      }else{
+      } else {
         this.addMobileError = "Mobile number is required";
         return false;
       }
-    }else {
+    } else {
       this.addFirstnameError = "First name is required";
       return false;
     }

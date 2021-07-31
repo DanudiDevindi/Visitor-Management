@@ -40,8 +40,7 @@ export class AuthenticationService {
         this.router.navigate(['/dashboard']);
       }
     },error => {
-      this.notificationService.showError("Invalid Login","")
-    });
+      this.notificationService.showError(error['msg'], "")    });
   }
 
   public logOut(){

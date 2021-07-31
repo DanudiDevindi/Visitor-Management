@@ -87,8 +87,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Record not found", "");
       }
     }, error => {
-      this.notificationService.showError("Record not found", "");
-    })
+      this.notificationService.showError(error['msg'], "")    })
   }
 
   _createBuilding() {
@@ -103,8 +102,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showSuccess("Building added success!", "");
         this._getBuildingList();
       }, error => {
-        this.notificationService.showError("Building added failed!", "");
-      })
+        this.notificationService.showError(error['msg'], "")      })
     } else {
       this.notificationService.showError("Building name is required!", "");
     }
@@ -128,8 +126,7 @@ export class ManageBuildingsComponent implements OnInit {
           this.notificationService.showError("Floor Added failed", "");
         }
       }, error => {
-        this.notificationService.showError("Floor Added failed", "");
-      });
+        this.notificationService.showError(error['msg'], "")      });
     } else {
       this.notificationService.showError("Floor name is required!", "")
     }
@@ -178,8 +175,7 @@ export class ManageBuildingsComponent implements OnInit {
           this.notificationService.showError("Building update failed!", "");
         }
       }, error => {
-        this.notificationService.showError("Building update failed!", "");
-      });
+        this.notificationService.showError(error['msg'], "")      });
     }
     this.modaleeditemployee.hide()
   }
@@ -199,8 +195,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Building delete failed", "");
       }
     }, error => {
-      this.notificationService.showError("Building delete failed", "");
-    })
+      this.notificationService.showError(error['msg'], "")    })
   }
 
   _getFloorsByBuildingId() {
@@ -211,8 +206,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Record not found", "");
       }
     }, error => {
-      this.notificationService.showError("Record not found", "");
-    });
+      this.notificationService.showError(error['msg'], "")    });
   }
 
   _loadFloorDetails(floorId, floorName, floorStatus) {
@@ -236,8 +230,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Floor delete failed", "");
       }
     }, error => {
-      this.notificationService.showError("Floor delete failed", "");
-    })
+      this.notificationService.showError(error['msg'], "")    })
     this.modalemanagefloor.hide()
   }
 
@@ -263,8 +256,7 @@ export class ManageBuildingsComponent implements OnInit {
         this.notificationService.showError("Floor update failed", "");
       }
     }, error => {
-      this.notificationService.showError("Floor update failed", "");
-    });
+      this.notificationService.showError(error['msg'], "")    });
     this.modalemanagefloor.hide()
   }
 

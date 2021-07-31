@@ -86,8 +86,7 @@ export class CheckedInVisitorsComponent implements OnInit {
      }
    },
      error => {
-       this.notificationService.showError("Record not found!","");
-     });
+       this.notificationService.showError(error['msg'], "")     });
   }
 
   _customSearch(){
@@ -99,8 +98,7 @@ export class CheckedInVisitorsComponent implements OnInit {
          this.notificationService.showError("Record not found!","");
        }
      },error => {
-       this.notificationService.showError("Record not found!","");
-     })
+       this.notificationService.showError(error['msg'], "")     })
    }else{
      this._getCheckedVisitors();
    }
@@ -114,8 +112,7 @@ export class CheckedInVisitorsComponent implements OnInit {
         this.notificationService.showError("Record not found!","");
       }
     },error => {
-      this.notificationService.showError("Record not found!","");
-    })
+      this.notificationService.showError(error['msg'], "")    })
   }
 
 }

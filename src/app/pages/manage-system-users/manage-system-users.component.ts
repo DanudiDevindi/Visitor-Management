@@ -87,8 +87,7 @@ export class ManageSystemUsersComponent implements OnInit {
     this.systemUserService.getSystemUsers('', 0).subscribe((data: Object[]) => {
       this.receptionList = data['body'];
     }, error => {
-      this.notificationService.showError("Records Not Found", "");
-    });
+      this.notificationService.showError(error['msg'], "")    });
   }
 
   _createReception() {
@@ -115,8 +114,7 @@ export class ManageSystemUsersComponent implements OnInit {
         this.notificationService.showError("Reception Added Failed", "");
       }
     }, error => {
-      this.notificationService.showError("Reception Added Failed", "");
-    })
+      this.notificationService.showError(error['msg'], "")    })
     this.modalAddReceptionist.hide()
   }
 
@@ -144,8 +142,7 @@ export class ManageSystemUsersComponent implements OnInit {
       this.systemUserService.getSystemUsers(this.customSearchText, 0).subscribe((data: Object[]) => {
         this.receptionList = data['body'];
       }, error => {
-        this.notificationService.showError("Records Not Found", "");
-      });
+        this.notificationService.showError(error['msg'], "")      });
     } else {
       this._getSystemUsers();
     }
@@ -183,8 +180,7 @@ export class ManageSystemUsersComponent implements OnInit {
         this.notificationService.showError("User update failed", "");
       }
     }, error => {
-      this.notificationService.showError("User update failed", "");
-    })
+      this.notificationService.showError(error['msg'], "")    })
     this.modalEditReceptionist.hide()
   }
 
