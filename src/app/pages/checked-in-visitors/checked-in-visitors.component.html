@@ -3,7 +3,7 @@
 <form class="checked-in-visitor-form">
     <div class="row">
       <div class="col-lg-5 col-md-8 col-sm-12 mb-3">
-            <input type="text" class="form-control" id="visitor-checkedIn" placeholder="Search by visitor's NIC , visitor's mobile" required>
+            <input type="text" [(ngModel)]="customSearchText" name="customSearchText" class="form-control" (ngModelChange)="_customSearch()" id="visitor-checkedIn" placeholder="Search by visitor's NIC , visitor's mobile" required>
             <div class="invalid-feedback">
                 Valid visitor detail is required.
             </div>
@@ -22,7 +22,7 @@
            <th scope="col">Checkout</th>
            <th scope="col">Pass Number</th>
            <th scope="col">Checked in time</th>
-           <th scope="col">Nic/Passport</th>
+           <th scope="col">Nic</th>
            <th scope="col">First Name</th>
            <th scope="col">Last Name</th>
            <th scope="col">Mobile</th>
@@ -30,17 +30,17 @@
            <th scope="col"> Staff Member Name</th>
          </tr>
        </thead>
-       <tbody *ngFor="let visiteda of pageOfItems">
+       <tbody *ngFor="let visitor of checkedVisitors">
          <tr>
-           <td> <button type="submit" id="checkoutbtn-checkedInVisitor" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
-           <td>{{visiteda.passnumber}}</td>
-           <td>{{visiteda.checkedintime}}</td>
-           <td>{{visiteda.nicpassport}}</td>
-           <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastname}}</td>
-           <td>{{visiteda.mobile}}</td>
-           <td>{{visiteda.email}}</td>
-           <td>{{visiteda.staffmembername}}</td>
+           <td> <button type="button" (click)="_checkOut(visitor.visitId)" id="checkoutbtn-checkedInVisitor" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
+           <td>{{visitor.passCard.name}}</td>
+           <td>{{visitor.checkInTime}}</td>
+           <td>{{visitor.visitor.nic}}</td>
+           <td>{{visitor.visitor.firstName}}</td>
+           <td>{{visitor.visitor.lastName}}</td>
+           <td>{{visitor.visitor.mobile}}</td>
+           <td>{{visitor.visitor.email}}</td>
+           <td>{{visitor.employee.firstName}}</td>
 
          </tr>
         </tbody>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {VisitorsService} from "../../service/visitors.service";
-import {NotificationService} from "../../shared/util/notification.service";
 import {Visitors} from "../../model/visitors";
+import {VisitService} from '../../service/visit.service';
+import {NotificationService} from '../../shared/util/notification.service';
+import {CheckedVisitors} from '../../model/checked-visitors';
 
 @Component({
   selector: 'app-checked-in-visitors',
@@ -10,13 +12,17 @@ import {Visitors} from "../../model/visitors";
 })
 export class CheckedInVisitorsComponent implements OnInit {
 
-  checkedinVisitors : Visitors[];
-
-
   constructor(
+    private visitService : VisitService,
     private visitorService : VisitorsService,
     private notificationService : NotificationService
   ) { }
+
+  checkedVisitors : CheckedVisitors[];
+
+  customSearchText : string;
+  checkedinVisitors : Visitors[];
+
   visited = [
     {
         passnumber: '1236',
@@ -68,6 +74,48 @@ export class CheckedInVisitorsComponent implements OnInit {
 }
 
   ngOnInit() {
+   this._getCheckedVisitors();
+  }
+
+  _getCheckedVisitors(){
+   this.visitService.getCheckedList('',0).subscribe((data)=>{
+     if (data['success']){
+       this.checkedVisitors = data['body'].content;
+     }else {
+       this.notificationService.showError("Record not found!","");
+     }
+   },
+     error => {
+       this.notificationService.showError("Record not found!","");
+     });
+  }
+
+  _customSearch(){
+   if (this.customSearchText !== ''){
+     this.visitService.getCheckedList(this.customSearchText,0).subscribe((data)=>{
+       if (data['success']){
+         this.checkedVisitors = data['body'].content;
+       }else {
+         this.notificationService.showError("Record not found!","");
+       }
+     },error => {
+       this.notificationService.showError("Record not found!","");
+     })
+   }else{
+     this._getCheckedVisitors();
+   }
+  }
+
+  _checkOut(visitId){
+    this.visitService.checkOut(visitId).subscribe((data)=>{
+      if (data['success']){
+        this.notificationService.showSuccess("Visitor Check out success","");
+      }else {
+        this.notificationService.showError("Record not found!","");
+      }
+    },error => {
+      this.notificationService.showError("Record not found!","");
+    })
   }
 
 }

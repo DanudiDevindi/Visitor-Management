@@ -3,7 +3,7 @@
 <form class="checked-in-visitor-form">
     <div class="row">
       <div class="col-lg-5 col-md-8 col-sm-12 mb-3">
-            <input type="text" class="form-control" id="overdue-serch-input" placeholder="Search by visitor's NIC , visitor's mobile" required>
+            <input type="text" [(ngModel)]="customSearchText" (ngModelChange)="_customSearch()" name="customSearchText" class="form-control" id="overdue-serch-input" placeholder="Search by visitor's NIC , visitor's mobile" required>
             <div class="invalid-feedback">
                 Valid visitor detail is required.
             </div>
@@ -30,18 +30,18 @@
            <th scope="col"> Staff Member Name</th>
          </tr>
        </thead>
-       <tbody *ngFor="let visiteda of pageOfItems">
+       <tbody *ngFor="let visitor of overDueCheckList">
          <tr>
-           <td> <button type="submit" id="overdue-checkout-btn" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
-           <td>{{visiteda.passnumber}}</td>
-           <td>{{visiteda.checkedintime}}</td>
-           <td>{{visiteda.nicpassport}}</td>
-           <td>{{visiteda.firstname}}</td>
-           <td>{{visiteda.lastname}}</td>
-           <td>{{visiteda.mobile}}</td>
-           <td>{{visiteda.email}}</td>
-           <td>{{visiteda.staffmembername}}</td>
-           
+           <td> <button type="button" (click)="_checkOut(visitor.visitId)" id="overdue-checkout-btn" class="btn btn-primary mb-3 search-btn">Checkout</button></td>
+           <td>{{visitor.passCard.name}}</td>
+           <td>{{visitor.checkInTime}}</td>
+           <td>{{visitor.visitor.nic}}</td>
+           <td>{{visitor.visitor.firstName}}</td>
+           <td>{{visitor.visitor.lastName}}</td>
+           <td>{{visitor.visitor.mobile}}</td>
+           <td>{{visitor.visitor.email}}</td>
+           <td>{{visitor.employee.firstName}}</td>
+
          </tr>
         </tbody>
         </table>
