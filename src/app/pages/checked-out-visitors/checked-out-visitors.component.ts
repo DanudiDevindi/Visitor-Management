@@ -131,7 +131,7 @@ export class CheckedOutVisitorsComponent implements OnInit {
        this.notificationService.showError("Record not found","");
      }
    },error => {
-     this.notificationService.showError("Record not found","");
+     this.notificationService.showError(error['msg'], "")
    });
   }
 

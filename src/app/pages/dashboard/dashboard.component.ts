@@ -35,8 +35,7 @@ export class DashboardComponent implements OnInit {
         this.notificationService.showError("Records not found","");
       }
     },error => {
-      this.notificationService.showError("Records not found","");
-    })
+      this.notificationService.showError(error['msg'], "")    })
   }
 
 }
