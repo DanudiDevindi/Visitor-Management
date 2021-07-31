@@ -3,7 +3,7 @@
 <form class="checked-in-visitor-form">
     <div class="row">
       <div class="col-lg-5 col-md-8 col-sm-12 mb-3">
-            <input type="text" class="form-control" id="overdue-serch-input" placeholder="Search by visitor's NIC , visitor's mobile" required>
+            <input type="text" [(ngModel)]="customSearchText" (ngModelChange)="_customSearch()" name="customSearchText" class="form-control" id="overdue-serch-input" placeholder="Search by visitor's NIC , visitor's mobile" required>
             <div class="invalid-feedback">
                 Valid visitor detail is required.
             </div>

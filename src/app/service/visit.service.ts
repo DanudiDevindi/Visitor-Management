@@ -22,8 +22,8 @@ export class VisitService {
     return this.httpClient.get(url,{headers});
   }
 
-  public getOverDueList(pageNo){
-    let url = `${this.BASE_URL+'v1/visit/overdue?index='+pageNo+'&size=10'}`;
+  public getOverDueList(text,pageNo){
+    let url = `${this.BASE_URL+'v1/visit/overdue?word='+text+'&index='+pageNo+'&size=10'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({
@@ -35,7 +35,7 @@ export class VisitService {
   }
 
   public getVisitCheckingHistory(){
-    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word=12345&startdata=2021-07-07T00:00:00&enddata=2021-07-08T00:00:00&index=0&size=10'}`;
+    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word=12345&startDate=2021-07-07T00:00:00&endData=2021-07-08T00:00:00&index=0&size=10'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({

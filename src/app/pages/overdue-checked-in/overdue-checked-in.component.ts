@@ -16,6 +16,7 @@ export class OverdueCheckedInComponent implements OnInit {
   ) { }
 
   overDueCheckList : CheckedVisitors[];
+  customSearchText : string;
 
   visited = [
     {
@@ -42,7 +43,7 @@ export class OverdueCheckedInComponent implements OnInit {
   }
 
   _getOverDueCheckedVisitors(){
-    this.visitService.getOverDueList(0).subscribe((data)=>{
+    this.visitService.getOverDueList('',0).subscribe((data)=>{
         if (data['success']){
           this.overDueCheckList = data['body'].content;
         }else {
@@ -64,6 +65,24 @@ export class OverdueCheckedInComponent implements OnInit {
     },error => {
       this.notificationService.showError("Record not found!","");
     })
+  }
+
+  _customSearch(){
+   if (this.customSearchText !== ''){
+     this.visitService.getOverDueList('',0).subscribe((data)=>{
+         if (data['success']){
+           this.overDueCheckList = data['body'].content;
+         }else {
+           this.notificationService.showError("Record not found!","");
+         }
+       },
+       error => {
+         this.notificationService.showError("Record not found!","");
+       });
+   }else{
+     this._getOverDueCheckedVisitors();
+   }
+
   }
 
 

@@ -5,7 +5,7 @@
         <div class="card-block-small">
           <i class="icofont icofont-user bg-c-blue card1-icon"></i>
           <span class="text-c-blue f-w-600">Total Visitors Count</span>
-          <h4>49</h4>
+          <h4>{{visitCount}}</h4>
           <div>
           <span class="f-left m-t-10 text-muted">
             <!-- <i class="text-c-blue f-16 icofont icofont-warning m-r-10"></i>Get more space -->
@@ -21,7 +21,7 @@
         <div class="card-block-small">
           <i class="icofont icofont-ui-home bg-c-blue card1-icon"></i>
           <span class="text-c-blue f-w-600">Check In Count</span>
-          <h4>123</h4>
+          <h4>{{checkinCount}}</h4>
           <div>
             <span class="f-left m-t-10 text-muted">
               <!-- <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours -->
@@ -37,7 +37,7 @@
         <div class="card-block-small">
           <i class="icofont icofont-warning-alt bg-c-blue card1-icon"></i>
           <span class="text-c-blue f-w-600">Overdue Count</span>
-          <h4>45</h4>
+          <h4>{{overDueCount}}</h4>
           <div>
             <span class="f-left m-t-10 text-muted">
               <!-- <i class="text-c-green f-16 icofont icofont-tag m-r-10"></i>Tracked from microsoft -->
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <!-- card3 end -->
     <!-- card4 start -->
    <div class="col-md-6 col-xl-3">
@@ -53,7 +53,7 @@
         <div class="card-block-small">
           <i class="icofont icofont-calendar bg-c-blue card1-icon"></i>
           <span class="text-c-blue f-w-600">Checkout Count</span>
-          <h4>62</h4>
+          <h4>{{checkoutCount}}</h4>
           <div>
             <span class="f-left m-t-10 text-muted">
               <!-- <i class="text-c-yellow f-16 icofont icofont-refresh m-r-10"></i>Just update -->
@@ -61,11 +61,11 @@
           </div>
         </div>
       </div>
-    </div> 
-    
+    </div>
+
     <!-- card4 end -->
-    
-  
+
+
     <!-- Statistics Start -->
     <!-- <div class="col-xl-2"></div>
       <div class="col-md-12 col-xl-8" style="text-align: center;">
@@ -77,7 +77,7 @@
         </div>
       </app-card>
     </div> -->
-   
+
     <!-- <div class="col-md-12 col-xl-4">
       <div class="card card-blue total-card">
         <div class="card-block">
@@ -89,7 +89,7 @@
         </div>
         <chart [type]="'line'" [data]="totalValueGraphData1" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
       </div>
-  
+
       <div class="card card-pink total-card">
         <div class="card-block">
           <div class="text-left">
@@ -100,11 +100,11 @@
         </div>
         <chart [type]="'line'" [data]="totalValueGraphData2" [options]="totalValueGraphOption" style="width: 100%; height: 100px;"></chart>
       </div>
-  
+
     </div>  -->
-  
+
     <!-- Statistics End -->
-  
+
     <!-- Statistics card start -->
     <!-- <div class="col-md-12 col-xl-4">
       <div class="card widget-statstic-card">
@@ -116,13 +116,13 @@
         </div>
         <div class="card-block">
           <i class="icofont icofont-presentation-alt st-icon bg-c-blue"></i>
-  
+
           <div class="text-left">
             <h3 class="d-inline-block">5,456</h3>
             <i class="icofont icofont-long-arrow-up f-30 text-c-green"></i>
             <span class="f-right">23%</span>
           </div>
-  
+
         </div>
       </div>
     </div> -->
@@ -138,7 +138,7 @@
         </div>
         <div class="card-block">
           <i class="icofont icofont-users-social st-icon bg-c-pink txt-lite-color"></i>
-  
+
           <div class="text-left">
             <h3 class="d-inline-block">3,874</h3>
             <i class="icofont icofont-long-arrow-down text-c-pink f-30 "></i>
@@ -158,7 +158,7 @@
         </div>
         <div class="card-block">
           <i class="icofont icofont-chart-line st-icon bg-c-yellow"></i>
-  
+
           <div class="text-left">
             <h3 class="d-inline-block">5,456</h3>
             <i class="icofont icofont-long-arrow-up text-c-green f-30 "></i>
@@ -167,7 +167,7 @@
       </div>
     </div> -->
     <!-- Statistics card end -->
-  
+
     <!-- email Sent Start -->
     <!-- <div class="col-md-12">
       <app-card [title]="'Email sent'" [cardClass]="'email-sent-card'" [classHeader]="true">
@@ -176,7 +176,7 @@
       </app-card>
     </div> -->
     <!-- email Sent End -->
-  
+
     <!-- data widget start -->
     <!-- <div class="col-md-12 col-xl-6">
       <app-card [title]="'Time spent : project &amp; task'" [cardClass]="'project-task'" [blockClass]="'p-b-10'">
@@ -331,11 +331,11 @@
             </label>
           </div>
         </div>
-  
+
       </app-card>
     </div> -->
     <!-- data widget End -->
-  
+
     <!-- weather Start -->
     <!-- <div class="col-md-6 col-xl-4">
       <div class="card ">
@@ -383,7 +383,7 @@
       </div>
     </div> -->
     <!-- weather End -->
-  
+
     <!-- browser Start -->
     <!-- <div class="col-md-6 col-xl-4">
       <app-card [title]="'Browser Stats'">
@@ -414,7 +414,7 @@
       </app-card>
     </div> -->
     <!-- browser End -->
-  
+
     <!-- profile Start -->
     <!-- <div class="col-md-12 col-xl-4">
       <div class="card card-contact-box ">
@@ -451,7 +451,7 @@
       </div>
     </div> -->
     <!-- profile End -->
-  
+
     <!-- project overview Start -->
     <!-- <div class="col-md-12 col-xl-8">
       <app-card [title]="'Recent Comments'" [blockClass]="'p-0'">
@@ -599,4 +599,3 @@
     </div> -->
     <!-- project overview End -->
   </div>
-  
