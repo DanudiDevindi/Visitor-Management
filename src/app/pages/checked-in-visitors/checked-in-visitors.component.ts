@@ -101,6 +101,8 @@ export class CheckedInVisitorsComponent implements OnInit {
      },error => {
        this.notificationService.showError("Record not found!","");
      })
+   }else{
+     this._getCheckedVisitors();
    }
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {NotificationService} from '../shared/util/notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthenticationService {
 
   constructor(
     private httpClient : HttpClient,
-    private router : Router
+    private router : Router,
+    private notificationService : NotificationService
   ) { }
 
   public userLogin(username,userPassword){
@@ -38,7 +40,7 @@ export class AuthenticationService {
         this.router.navigate(['/dashboard']);
       }
     },error => {
-      alert('Invalid Login!');
+      this.notificationService.showError("Invalid Login","")
     });
   }
 

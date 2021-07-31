@@ -10,10 +10,11 @@
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group">
               <input class="form-control" [(ngModel)]="username" id="login-username" type="text" name="username" placeholder="UserName">
-              <span id="user-name-error"></span>
+              <span id="user-name-error" style="color: red">{{userNameError}}</span>
             </div>
             <div class="form-group">
               <input class="form-control" [(ngModel)]="userPassword" id="login-password" type="password" name="userPassword" placeholder="Password">
+              <span id="user-password-error" style="color: red">{{userPasswordError}}</span>
             </div>
             <div class="form-group">
               <button type="submit" id="login-btn" class="btn btn-primary btn-block">Log In</button>
