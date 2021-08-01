@@ -35,8 +35,8 @@ export class VisitService {
     return this.httpClient.get(url,{headers});
   }
 
-  public getVisitCheckingHistory(){
-    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word=12345&startDate=2021-07-07T00:00:00&endData=2021-07-08T00:00:00&index=0&size=100'}`;
+  public getVisitCheckingHistory(text,fromDate,toDate){
+    let url = `${this.BASE_URL+'v1/visit/history?type=ALL&word='+text+'&startDate='+fromDate+'&endDate='+toDate+'&index=0&size=100'}`;
     let token = localStorage.getItem('access_token');
     const headers =
       new HttpHeaders({

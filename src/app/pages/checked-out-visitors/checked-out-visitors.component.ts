@@ -4,21 +4,32 @@ import {NotificationService} from '../../shared/util/notification.service';
 import {Visitors} from '../../model/visitors';
 import {CheckedVisitors} from '../../model/checked-visitors';
 import {VisitService} from '../../service/visit.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-checked-out-visitors',
   templateUrl: './checked-out-visitors.component.html',
-  styleUrls: ['./checked-out-visitors.component.scss']
+  styleUrls: ['./checked-out-visitors.component.scss'],
+  providers: [DatePipe]
 })
 export class CheckedOutVisitorsComponent implements OnInit {
 
 
+  myDate = (new Date().getMonth() + 1) + "/01/" + new Date().getFullYear();
+  lastDate = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
   constructor(
+    private datePipe : DatePipe,
     private visitorService : VisitService,
     private notificationService : NotificationService
-  ) { }
+  ) {
+    this.fromDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+    this.toDate = this.datePipe.transform(this.lastDate,'yyyy-MM-dd');
+  }
 
   checkoutVisitors : CheckedVisitors[];
+  fromDate : string;
+  toDate : string;
+  customSearchText : string;
 
   visited = [
     {
@@ -124,7 +135,7 @@ export class CheckedOutVisitorsComponent implements OnInit {
   }
 
   _getVisitorHistory(){
-   this.visitorService.getVisitCheckingHistory().subscribe((data)=>{
+   this.visitorService.getVisitCheckingHistory('',this.fromDate,this.toDate).subscribe((data)=>{
      if (data['success']){
        this.checkoutVisitors = data['body'].content;
      }else {
@@ -133,6 +144,22 @@ export class CheckedOutVisitorsComponent implements OnInit {
    },error => {
      this.notificationService.showError(error['msg'], "")
    });
+  }
+
+  _customSearch(){
+   if (this.fromDate !== undefined && this.toDate !== undefined || this.customSearchText !== undefined || this.customSearchText !== ''){
+     this.visitorService.getVisitCheckingHistory(this.customSearchText,this.fromDate,this.toDate).subscribe((data)=>{
+       if (data['success']){
+         this.checkoutVisitors = data['body'].content;
+       }else {
+         this.notificationService.showError("Record not found","");
+       }
+     },error => {
+       this.notificationService.showError(error['msg'], "")
+     });
+   }else {
+     this._getVisitorHistory();
+   }
   }
 
 }
