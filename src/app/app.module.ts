@@ -64,7 +64,7 @@ import {ModalComponent} from "./modalview/modal.component";
     ReactiveFormsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

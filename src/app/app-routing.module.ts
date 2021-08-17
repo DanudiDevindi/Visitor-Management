@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    canActivate : [AuthGuard],
     children: [
       // {
       //   path: 'dashboard',
@@ -29,43 +28,35 @@ const routes: Routes = [
       //start create new component routings
       {
         path: 'dashboard',
-        component:DashboardComponent,
-        canActivate : [AuthGuard]
+        component:DashboardComponent
         },
       {
         path: 'check-in-visitors',
-        component :CheckInVisitorsComponent,
-        canActivate : [AuthGuard]
+        component :CheckInVisitorsComponent
       },
       {
         path: 'checked-in-visitors',
-        component :CheckedInVisitorsComponent,
-        canActivate : [AuthGuard]
+        component :CheckedInVisitorsComponent
       },
       {
         path: 'overdue-checked-in',
-        component :OverdueCheckedInComponent,
-        canActivate : [AuthGuard]
+        component :OverdueCheckedInComponent
       },
       {
         path: 'checked-out-visitors',
-        component :CheckedOutVisitorsComponent,
-        canActivate : [AuthGuard]
+        component :CheckedOutVisitorsComponent
       },
       {
         path: 'manage-staff',
-        component :ManageStaffComponent,
-        canActivate : [AuthGuard]
+        component :ManageStaffComponent
       },
       {
       path: 'manage-system-users',
-      component: ManageSystemUsersComponent,
-        canActivate : [AuthGuard]
+      component: ManageSystemUsersComponent
       },
       {
       path: 'manage-buldings',
-      component: ManageBuildingsComponent,
-        canActivate : [AuthGuard]
+      component: ManageBuildingsComponent
       },
       // {
       // path: 'user-login',
