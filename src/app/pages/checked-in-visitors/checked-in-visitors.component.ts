@@ -108,6 +108,7 @@ export class CheckedInVisitorsComponent implements OnInit {
     this.visitService.checkOut(visitId).subscribe((data)=>{
       if (data['success']){
         this.notificationService.showSuccess("Visitor Check out success","");
+        this._getCheckedVisitors();
       }else {
         this.notificationService.showError("Record not found!","");
       }

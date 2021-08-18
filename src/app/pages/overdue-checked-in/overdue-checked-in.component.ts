@@ -58,6 +58,7 @@ export class OverdueCheckedInComponent implements OnInit {
     this.visitService.checkOut(visitId).subscribe((data)=>{
       if (data['success']){
         this.notificationService.showSuccess("Visitor Check out success","");
+        this._getOverDueCheckedVisitors();
       }else {
         this.notificationService.showError("Record not found!","");
       }
